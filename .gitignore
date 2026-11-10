@@ -1,0 +1,26 @@
+# Saved connections (API keys, DPAPI-encrypted but still personal to this PC)
+profiles.json
+
+# Generated at runtime
+test_runs/
+results/
+uploads/
+test_runner.log
+*.log
+
+# Excel lock/temp files; keep the template, ignore other workbooks
+~$*.xlsx
+.~lock.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.claude/
+Thumbs.db
+Desktop.ini

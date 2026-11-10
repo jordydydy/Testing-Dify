@@ -293,6 +293,7 @@ details.log summary{cursor:pointer;color:var(--mut);width:max-content;margin-top
         </select></div>
       <div class="only-cafile hide"><label class="l" for="ca_file">CA file path (.pem / .crt, Base-64)</label><input type="text" id="ca_file" placeholder="C:\certs\telkomsel-root.pem" spellcheck="false"></div>
       <div><label class="l" for="user">User id</label><input type="text" id="user" value="tester-001"></div>
+      <label class="chk"><input type="checkbox" id="random_user"><span>Use a random UUID as the user id instead (a new one for every request)</span></label>
       <div><label class="l" for="inputs">Extra inputs (JSON)</label><input type="text" id="inputs" value="{}" spellcheck="false"></div>
       <label class="chk"><input type="checkbox" id="remember"><span>Remember these settings in this browser, including the API key</span></label>
     </div>
@@ -435,7 +436,7 @@ details.log summary{cursor:pointer;color:var(--mut);width:max-content;margin-top
 <script>
 const $=id=>document.getElementById(id);
 const F=['mode','ssl_mode','ca_file','base_url','api_key','wf_base_url','wf_api_key','user','inputs','wf_question_var','wf_query_var','wf_query_tpl','wf_result_field','custom_url','custom_path','custom_headers','custom_body','workers','timeout','retries','time_limit','min_content','path'];
-const C=['fail_slow','auto_export','also_tool','clean','remember'];
+const C=['random_user','fail_slow','auto_export','also_tool','clean','remember'];
 let tests=[],results={},prev={},sel=new Set(),polling=null,lastRunning=false,running=false,cur=1,profiles={};
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -470,6 +471,8 @@ function modeUI(){const m=$('mode').value;
   document.querySelectorAll('.only-custom').forEach(e=>e.classList.toggle('hide',m!=='custom'));
   document.querySelectorAll('.only-cafile').forEach(e=>e.classList.toggle('hide',$('ssl_mode').value!=='ca_file'));paintSteps();}
 [...F,...C].forEach(k=>$(k).addEventListener('change',()=>{saveSettings();modeUI();}));
+function userUI(){$('user').disabled=$('random_user').checked;}
+$('random_user').addEventListener('change',userUI);
 $('api_key').addEventListener('input',paintSteps);$('base_url').addEventListener('input',paintSteps);
 /* ---- saved connections (keys live encrypted on this PC, never in the page) ---- */
 async function loadProfiles(){try{profiles=(await api('/api/profiles')).profiles||{};}catch(e){profiles={};}
@@ -657,7 +660,7 @@ async function exp(kind){setRes($('exres'),'Exporting…');try{const j=await api
 $('exX').onclick=()=>exp('xlsx');$('exN').onclick=()=>exp('nodes');$('exC').onclick=()=>exp('csv');$('exJ').onclick=()=>exp('json');
 
 /* ---- init: returning users skip straight to where they left off ---- */
-(async()=>{loadSettings();modeUI();await loadProfiles();await loadTests();await loadRuns();
+(async()=>{loadSettings();modeUI();userUI();await loadProfiles();await loadTests();await loadRuns();
   const s=await refresh().catch(()=>({running:false}));poll(false);
   if(!tests.length&&$('path').value){try{await api('/api/load',{path:$('path').value,clean:$('clean').checked});await loadTests();setRes($('loadres'),`Loaded ${tests.length} rows`,'ok');}catch(e){setRes($('loadres'),'Could not auto-load: '+e.message,'bad');}}
   let n=1;if(running)n=3;else if(hasResults())n=4;else if(done(1)&&tests.length)n=3;else if(done(1))n=2;

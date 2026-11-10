@@ -12,6 +12,7 @@ What it does
   * records time, tool calls, the query the agent wrote and which documents the tool returned
   * exports the results into a copy of your workbook (Actual Result, Evidence, Time, Status, Comments)
 """
+import uuid
 import base64
 import collections
 import difflib
@@ -157,6 +158,13 @@ def same_doc(a, b):
     if min(len(na), len(nb)) >= 8 and (na in nb or nb in na):
         return True
     return difflib.SequenceMatcher(None, na, nb).ratio() >= 0.9
+
+
+def user_of(st):
+    """Dify end-user id: a fresh random UUID per request when 'random_user' is on, else the typed id"""
+    if st.get("random_user"):
+        return str(uuid.uuid4())
+    return st.get("user") or "tester"
 
 
 def clean_question(raw, clean=True):
@@ -431,7 +439,7 @@ def call_chat(test, st, stream):
     if st.get("send_channel") and test.get("channel"):
         inputs[st.get("channel_var") or "channel_id"] = test["channel"]
     body = {"inputs": inputs, "query": test["question"], "response_mode": "streaming" if stream else "blocking",
-            "user": st.get("user") or "tester", "conversation_id": "", "auto_generate_name": False}
+            "user": user_of(st), "conversation_id": "", "auto_generate_name": False}
     timeout = float(st.get("timeout") or 120)
     t0 = time.time()
     out = {"answer": "", "ttft": None, "thoughts": {}, "meta": {}, "raw": "", "log": []}
@@ -539,7 +547,7 @@ def trace_workflow(st, question, query):
     if not base or not key:
         raise RuntimeError("workflow Base URL / API key not set")
     qv, rv = st.get("wf_question_var") or "question", st.get("wf_query_var") or "query"
-    body = {"inputs": {qv: question, rv: query}, "response_mode": "streaming", "user": st.get("user") or "tester"}
+    body = {"inputs": {qv: question, rv: query}, "response_mode": "streaming", "user": user_of(st)}
     headers = {"Authorization": "Bearer " + key, "Content-Type": "application/json"}
     timeout = float(st.get("timeout") or 120)
     t0 = time.time()
@@ -602,7 +610,7 @@ def call_custom(test, st):
     url = st.get("custom_url") or st["base_url"]
     tpl = st.get("custom_body") or '{"query": "{{question}}", "user": "{{user}}"}'
     esc = lambda s: json.dumps(str(s))[1:-1]
-    body = json.loads(tpl.replace("{{question}}", esc(test["question"])).replace("{{user}}", esc(st.get("user") or "tester")))
+    body = json.loads(tpl.replace("{{question}}", esc(test["question"])).replace("{{user}}", esc(user_of(st))))
     headers = {"Content-Type": "application/json"}
     if st.get("api_key"):
         headers["Authorization"] = "Bearer " + st["api_key"]
