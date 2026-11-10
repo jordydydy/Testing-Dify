@@ -1,0 +1,2873 @@
+{
+ "name": "run_20261110_152402",
+ "settings": {
+  "mode": "chat_stream",
+  "ssl_mode": "corp",
+  "ca_file": "{}",
+  "base_url": "https://genaistudio.telkomsel.co.id/studio/v1",
+  "wf_base_url": "https://genaistudio.telkomsel.co.id/studio/v1",
+  "user": "djordy_fernando_x",
+  "inputs": "{}",
+  "wf_question_var": "question",
+  "wf_query_var": "query",
+  "wf_query_tpl": "{question}",
+  "wf_result_field": "result",
+  "custom_url": "",
+  "custom_path": "answer",
+  "custom_headers": "{}",
+  "custom_body": "{\"query\": \"{{question}}\", \"user\": \"{{user}}\"}",
+  "workers": "8",
+  "timeout": "120",
+  "retries": "1",
+  "time_limit": "40",
+  "min_content": "0",
+  "path": "C:\\Users\\Jordy\\Downloads\\Test Document v2 - Corporate Knowledge Orchestrator.xlsx",
+  "fail_slow": false,
+  "auto_export": false,
+  "also_tool": true,
+  "clean": true,
+  "remember": true,
+  "target": "sub",
+  "send_channel": false,
+  "channel_var": "channel_id"
+ },
+ "file": "C:\\Users\\Jordy\\Downloads\\Backup Procurement\\Workflow\\Test_Automation\\uploads\\20261110_152330_Test Document v2 - Corporate Knowledge Orchestrator.xlsx",
+ "results": [
+  {
+   "id": "TS-01.38",
+   "row": 9,
+   "question": "mpa itu apa",
+   "expected_doc": "PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:24:47",
+   "status": "PASS",
+   "reason": "cited expected document",
+   "diag": "",
+   "cited_doc": "PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf",
+   "level": "Level 1 (PD)",
+   "sources": [
+    {
+     "level": "Level 1 (PD)",
+     "doc": "PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQBX4uYWT53nQbKuEY7RcdXkAaoRs5fhVIgrkSEZuS7iEBI?e=dHoi6j"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Apa yang dimaksud dengan MPA dalam pengadaan di Telkomsel?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 1 (PD)\nDocument source: [PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQBX4uYWT53nQbKuEY7RcdXkAaoRs5fhVIgrkSEZuS7iEBI?e=dHoi6j)\n\nBerdasarkan regulasi yang **Procurement Hub Agent** temukan, Kontrak Payung atau *Master Purchase Agreement* (MPA) adalah salah satu bentuk *agreement* atau kontrak yang digunakan untuk menjamin kepastian harga, kualitas, ketersediaan, dan waktu pengiriman, serta syarat dan ketentuan dalam jangka waktu tertentu. \n\nKetentuan mengenai MPA tercantum dalam Peraturan Direksi Perseroan Nomor: ....../LO-.../PD-00/.../2023 tentang Kebijakan Dan Kewenangan Pengadaan Barang dan/atau Jasa (halaman 7, butir v), dengan karakteristik utama sebagai berikut:\n* **Nilai Kontrak Estimasi:** Nilai kontrak dalam MPA masih bersifat estimasi pada saat perjanjian disepakati.\n* **Pelaksanaan Transaksi:** Dalam operasionalisasinya, MPA ditindaklanjuti dengan penerbitan *Purchase Order* (PO) atau *non-PO* yang disesuaikan dengan kebutuhan riil Perseroan.\n* **Kewenangan Persetujuan:** Merujuk pada Pasal 11 ayat (3) dan Pasal 13 ayat (1), persetujuan *agreement* Kontrak Payung hanya dapat dilakukan oleh Fungsi Pengadaan di Kantor Pusat dengan batasan nilai kewenangan:\n  * *General Manager* Fungsi Pengadaan: sampai dengan Rp 10 Miliar.\n  * *Vice President* Fungsi Pengadaan: sampai dengan Rp 100 Miliar.\n  * Direktur Fungsi Pengadaan: sampai dengan Rp 250 Miliar.\n  * Direktur Utama: di atas Rp 250 Miliar.' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='pengertian definisi Kontrak Payung MPA pengadaan' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 5 chunks [PD 002A_2023 Kebijakan dan Kewenangan Pengada x5 (0.42)]\nLevel 2 (PR): 6 chunks [PR 009_2025 - Amandemen Pertama Peraturan Dir x4 (0.37), PR 016_2023 - Aktivitas Pengadaan Barang dan- x2 (0.34)]\nLevel 3 (SE): 4 chunks [224. SE Pengaturan & Mekanisme Pengawasan, Pe x2 (0.34), 092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.32)]\nLevel 4 (ND): 3 chunks [ND Pengaturan Penerbitan Agreement secara Par x2 (0.32), ND - SVP Procurement tentang Penjelasan terka x1 (0.32)]\nLevel 5 (Others): 3 chunks [309 Pengaturan Pelaksanaan Pengadaan Berdasar x1 (0.31), Share_Guide DPL x1 (0.29), Share_DP Submission User x1 (0.28)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 1\nDOC_TITLE: PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf\nQUOTE: Kontrak Payung atau Master Purchase Agreement (MPA) adalah salah satu bentuk agreement atau kontrak yang digunakan untuk menjamin kepastian harga, kualitas, ketersediaan, dan waktu pengiriman, serta syarat dan ketentuan dalam jangka waktu tertentu' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 1 (PD)\nDocument source: [PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQBX4uYWT53nQbKuEY7RcdXkAaoRs5fhVIgrkSEZuS7iEBI?e=dHoi6j)\n\nBerdasarkan regulasi yang **Procurement Hub Agent** temukan, Kontrak Payung atau *Master Purchase Agreement* (MPA) adalah salah satu bentuk *agreement* atau kontrak yang digunakan untuk menjamin kepastian harga, kualitas, ketersediaan, dan waktu pengiriman, serta syarat dan ketentuan dalam jangka waktu tertentu. \n\nKetentuan mengenai MPA tercantum dalam Peraturan Direksi Perseroan Nomor: ....../LO-.../PD-00/.../2023 tentang Kebijakan Dan Kewenangan Pengadaan Barang dan/atau Jasa (halaman 7, butir v), dengan karakteristik utama sebagai berikut:\n* **Nilai Kontrak Estimasi:** Nilai kontrak dalam MPA masih bersifat estimasi pada saat perjanjian disepakati.\n* **Pelaksanaan Transaksi:** Dalam operasionalisasinya, MPA ditindaklanjuti dengan penerbitan *Purchase Order* (PO) atau *non-PO* yang disesuaikan dengan kebutuhan riil Perseroan.\n* **Kewenangan Persetujuan:** Merujuk pada Pasal 11 ayat (3) dan Pasal 13 ayat (1), persetujuan *agreement* Kontrak Payung hanya dapat dilakukan oleh Fungsi Pengadaan di Kantor Pusat dengan batasan nilai kewenangan:\n  * *General Manager* Fungsi Pengadaan: sampai dengan Rp 10 Miliar.\n  * *Vice President* Fungsi Pengadaan: sampai dengan Rp 100 Miliar.\n  * Direktur Fungsi Pengadaan: sampai dengan Rp 250 Miliar.\n  * Direktur Utama: di atas Rp 250 Miliar.\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"pengertian definisi Kontrak Payung MPA pengadaan\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 5 chunks [PD 002A_2023 Kebijakan dan Kewenangan Pengada x5 (0.42)]\nLevel 2 (PR): 6 chunks [PR 009_2025 - Amandemen Pertama Peraturan Dir x4 (0.37), PR 016_2023 - Aktivitas Pengadaan Barang dan- x2 (0.34)]\nLevel 3 (SE): 4 chunks [224. SE Pengaturan & Mekanisme Pengawasan, Pe x2 (0.34), 092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.32)]\nLevel 4 (ND): 3 chunks [ND Pengaturan Penerbitan Agreement secara Par x2 (0.32), ND - SVP Procurement tentang Penjelasan terka x1 (0.32)]\nLevel 5 (Others): 3 chunks [309 Pengaturan Pelaksanaan Pengadaan Berdasar x1 (0.31), Share_Guide DPL x1 (0.29), Share_DP Submission User x1 (0.28)]\", \"judge\": \"LEVEL: 1\nDOC_TITLE: PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf\nQUOTE: Kontrak Payung atau Master Purchase Agreement (MPA) adalah salah satu bentuk agreement atau kontrak yang digunakan untuk menjamin kepastian harga, kualitas, ketersediaan, dan waktu pengiriman, serta syarat dan ketentuan dalam jangka waktu tertentu\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": true,
+   "expected_level_in_tool": 9,
+   "content_score": 97,
+   "best_chunk_pct": 97,
+   "slow": true,
+   "t_llm1": 6.57,
+   "t_tool": 28.6,
+   "t_llm2": 7.79,
+   "t_answer": 1.9,
+   "agent_log": [
+    {
+     "t": 6.57,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Apa yang dimaksud dengan MPA dalam pengadaan di Telkomsel?\"}}"
+    },
+    {
+     "t": 35.17,
+     "event": "tool result received",
+     "detail": "5964 characters"
+    },
+    {
+     "t": 42.96,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 44.86,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5453, 'completion_tokens': 616, 'total_tokens': 6069, 'latency': 43.677112953038886}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5453,
+    "completion_tokens": 616,
+    "total_tokens": 6069,
+    "latency": 43.677112953038886
+   },
+   "nodes": [],
+   "prompt_tokens": 5453,
+   "direct": {
+    "ok": true,
+    "question": "mpa itu apa",
+    "query": "Apa yang dimaksud dengan MPA dalam pengadaan di Telkomsel?",
+    "time": 35.61,
+    "wf_elapsed": 33.6763,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.02,
+      "error": null,
+      "start": 0.98,
+      "end": 0.98
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 3.03,
+      "error": null,
+      "start": 1.37,
+      "end": 3.96
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.06,
+      "error": null,
+      "start": 4.01,
+      "end": 4.02
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.15,
+      "error": null,
+      "start": 4.06,
+      "end": 4.16
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 10.66,
+      "error": null,
+      "count": 3,
+      "smin": 0.302,
+      "smax": 0.325,
+      "start": 7.64,
+      "end": 14.79
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 12.79,
+      "error": null,
+      "count": 8,
+      "smin": 0.301,
+      "smax": 0.38,
+      "start": 4.93,
+      "end": 16.91
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 13.27,
+      "error": null,
+      "count": 6,
+      "smin": 0.296,
+      "smax": 0.414,
+      "start": 4.45,
+      "end": 17.36
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 14.59,
+      "error": null,
+      "count": 5,
+      "smin": 0.31,
+      "smax": 0.328,
+      "start": 7.33,
+      "end": 18.72
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 17.41,
+      "error": null,
+      "count": 4,
+      "smin": 0.284,
+      "smax": 0.334,
+      "start": 7.75,
+      "end": 21.53
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.1,
+      "error": null,
+      "start": 21.57,
+      "end": 21.67
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 4.99,
+      "error": null,
+      "start": 21.75,
+      "end": 26.63
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.15,
+      "error": null,
+      "info": "found=yes",
+      "start": 26.66,
+      "end": 26.71
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.17,
+      "error": null,
+      "start": 26.86,
+      "end": 26.86
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.04,
+      "error": null,
+      "start": 26.91,
+      "end": 26.91
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 1.17,
+      "error": null,
+      "count": 1,
+      "smin": 0.829,
+      "smax": 0.829,
+      "start": 26.96,
+      "end": 28.08
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.14,
+      "error": null,
+      "start": 28.21,
+      "end": 28.22
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 28.28,
+      "end": 28.32
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 3.98,
+      "error": null,
+      "start": 28.33,
+      "end": 32.23
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 2.1,
+      "error": null,
+      "start": 34.13,
+      "end": 34.31
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.16,
+      "error": null,
+      "start": 34.35,
+      "end": 34.44
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.2,
+      "error": null,
+      "start": 34.55,
+      "end": 34.67
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "L5 Others Retrieval 17.41s"
+   },
+   "replay_diag": "the agent's call had it but the replay did not: retrieval varies between identical calls",
+   "time": 44.86,
+   "ttft": 42.96,
+   "answer": "Knowledge Level: Level 1 (PD)\nDocument source: [PD 002A_2023 Kebijakan dan Kewenangan Pengadaan Barang dan atau Jasa - OCR.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQBX4uYWT53nQbKuEY7RcdXkAaoRs5fhVIgrkSEZuS7iEBI?e=dHoi6j)\n\nBerdasarkan regulasi yang **Procurement Hub Agent** temukan, Kontrak Payung atau *Master Purchase Agreement* (MPA) adalah salah satu bentuk *agreement* atau kontrak yang digunakan untuk menjamin kepastian harga, kualitas, ketersediaan, dan waktu pengiriman, serta syarat dan ketentuan dalam jangka waktu tertentu. \n\nKetentuan mengenai MPA tercantum dalam Peraturan Direksi Perseroan Nomor: ....../LO-.../PD-00/.../2023 tentang Kebijakan Dan Kewenangan Pengadaan Barang dan/atau Jasa (halaman 7, butir v), dengan karakteristik utama sebagai berikut:\n* **Nilai Kontrak Estimasi:** Nilai kontrak dalam MPA masih bersifat estimasi pada saat perjanjian disepakati.\n* **Pelaksanaan Transaksi:** Dalam operasionalisasinya, MPA ditindaklanjuti dengan penerbitan *Purchase Order* (PO) atau *non-PO* yang disesuaikan dengan kebutuhan riil Perseroan.\n* **Kewenangan Persetujuan:** Merujuk pada Pasal 11 ayat (3) dan Pasal 13 ayat (1), persetujuan *agreement* Kontrak Payung hanya dapat dilakukan oleh Fungsi Pengadaan di Kantor Pusat dengan batasan nilai kewenangan:\n  * *General Manager* Fungsi Pengadaan: sampai dengan Rp 10 Miliar.\n  * *Vice President* Fungsi Pengadaan: sampai dengan Rp 100 Miliar.\n  * Direktur Fungsi Pengadaan: sampai dengan Rp 250 Miliar.\n  * Direktur Utama: di atas Rp 250 Miliar.",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.39",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.40",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-02.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-03.07",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-03.08",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-04.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-08.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-09.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-10.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-12.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-14.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-15.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-16.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-17.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.01",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.02",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.03",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.05",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.06",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.07",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.08",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.09",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.10",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.11",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.12",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.13",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.14",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.15",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.16",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.17",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.18",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.19",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.20",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.21",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.22",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.23",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.24",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.25",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.26",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.27",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.28",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.29",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.30",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.01",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.02",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.03",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.05",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.06",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.07",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.08",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.09",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.10",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.11",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.12",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.13",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.14",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.15",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.16",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.17",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.18",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.19",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.20",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.21",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.22",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.23",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.24",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.25",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.26",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.27",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.28",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.29",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.30",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.33",
+   "row": 4,
+   "question": "Bagaimana manajemen database vendor?",
+   "expected_doc": "060_Surat_Edaran_VP_CGAE_Procurement_-_Manajemen_Pengelolaan_Vendor.pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:24:50",
+   "status": "FAIL",
+   "reason": "cited 'PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf' instead of expected '060_Surat_Edaran_VP_CGAE_Procurement_-_Manajemen_Pengelolaan_Vendor.pdf'",
+   "diag": "retrieval: expected doc not returned by tool",
+   "cited_doc": "PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf",
+   "level": "Level 2 (PR)",
+   "sources": [
+    {
+     "level": "Level 2 (PR)",
+     "doc": "PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAhsz2AIQH4TZ9Rz5Y6ScbhAa710uzzouyFvusLtW_gnF4?e=YNEbCL"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Bagaimana manajemen database vendor?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 2 (PR)\nDocument source: [PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAhsz2AIQH4TZ9Rz5Y6ScbhAa710uzzouyFvusLtW_gnF4?e=YNEbCL)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, manajemen data (*database*) atau daftar *Vendor* (*Vendor List*) di Perseroan dikelola secara terpadu oleh Fungsi Pengelola *Vendor* untuk keperluan *sourcing*, pengelolaan kinerja, serta pengintegrasian profil Tingkat Komponen Dalam Negeri (TKDN).\n\nKetentuan mengenai manajemen *database Vendor* diatur dalam Peraturan Direktur Keuangan dan Manajemen Risiko tentang Aktivitas Pengadaan Barang dan/atau Jasa (*Inbound Logistics*) (PR 016/2023 jo. PR 009/2025, Pasal 28–30) serta Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN) (PR 002/2025, Pasal 6):\n\n* **Pengelolaan Terpadu dan Sumber Data:** *Daftar Vendor* (*Vendor List*) dikelola terpadu oleh Fungsi Pengelola *Vendor* menggunakan sumber internal dari sistem pendaftaran *Vendor* (*Vendor Registration System*) serta sumber eksternal berupa hasil riset pasar, publikasi asosiasi industri, maupun informasi dari proses *Request for Information* (*RFI*).\n* **Pemutakhiran Data:** Apabila terdapat perubahan data, *Vendor* atau *Supplier* dapat melakukan pemutakhiran dokumen administratif dan informasi tambahan lainnya secara mandiri.\n* **Pemanfaatan Data:** *Vendor List* digunakan sebagai bahan informasi dalam aktivitas *Category Management* atau penyeleksian calon penyedia dalam proses *Sourcing*. Berdasarkan amandemen PR 009/2025 Pasal 30 ayat (5), kepesertaan *Vendor* dalam pengadaan berfokus pada pemenuhan persyaratan legalitas, administratif, dan keuangan yang dipersyaratkan pada aturan berlaku serta dokumen pengadaan, tanpa kewajiban mutlak telah terdaftar sebelumnya pada *Vendor List*.\n* **Penyertaan dan Pemutakhiran Profil TKDN:** Dalam penyusunan dan pemutakhiran *database Vendor Management*, Perseroan melakukan pengembangan dan pengelolaan dengan menyertakan informasi atau dokumentasi penggunaan produk dalam negeri yang mengacu pada Daftar Inventarisasi Barang dan/atau Jasa Produksi Dalam Negeri terbitan Kementerian Perindustrian. Pemutakhiran profil TKDN ini bertujuan untuk:\n  * Menyediakan informasi profil TKDN *Vendor*;\n  * Merumuskan rencana dan strategi implementasi peningkatan TKDN;\n  * Memenuhi kebutuhan pelaporan dan *monitoring*; serta\n  * Melaksanakan pembinaan kepada *Vendor* dan/atau *Supplier*.' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='manajemen pengelolaan vendor database pendaftaran evaluasi' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 5 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x3 (0.30), PD 002A_2023 Kebijakan dan Kewenangan Pengada x2 (0.29)]\nLevel 2 (PR): 8 chunks [PR 016_2023 - Aktivitas Pengadaan Barang dan- x3 (0.35), PR 002_2025 - Pedoman Implementasi Tingkat Ko x4 (0.34), PR 009_2025 - Amandemen Pertama Peraturan Dir x1 (0.29)]\nLevel 3 (SE): 3 chunks [060_Surat_Edaran_VP_CGAE_Procurement_-_Manaje x3 (0.41)]\nLevel 4 (ND): 0 chunks [-]\nLevel 5 (Others): 5 chunks [Panduan Perubahan Data Perusahaan x3 (0.35), Dokumen Nilai Tambah_template x1 (0.34), Share_Guide DPL x1 (0.32)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 2\nDOC_TITLE: PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf\nQUOTE: Dalam melakukan penyusunan dan pemutakhiran manajemen data (database) Vendor management, Perseroan dapat melakukan pengembangan dan pengelolaan Vendor dengan penyertaan informasi atau dokumentasi penggunaan produk dalam negeri dengan mengacu kepada Daftar Inventarisasi Barang dan/atau Jasa Produksi Dalam Negeri' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 2 (PR)\nDocument source: [PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAhsz2AIQH4TZ9Rz5Y6ScbhAa710uzzouyFvusLtW_gnF4?e=YNEbCL)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, manajemen data (*database*) atau daftar *Vendor* (*Vendor List*) di Perseroan dikelola secara terpadu oleh Fungsi Pengelola *Vendor* untuk keperluan *sourcing*, pengelolaan kinerja, serta pengintegrasian profil Tingkat Komponen Dalam Negeri (TKDN).\n\nKetentuan mengenai manajemen *database Vendor* diatur dalam Peraturan Direktur Keuangan dan Manajemen Risiko tentang Aktivitas Pengadaan Barang dan/atau Jasa (*Inbound Logistics*) (PR 016/2023 jo. PR 009/2025, Pasal 28–30) serta Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN) (PR 002/2025, Pasal 6):\n\n* **Pengelolaan Terpadu dan Sumber Data:** *Daftar Vendor* (*Vendor List*) dikelola terpadu oleh Fungsi Pengelola *Vendor* menggunakan sumber internal dari sistem pendaftaran *Vendor* (*Vendor Registration System*) serta sumber eksternal berupa hasil riset pasar, publikasi asosiasi industri, maupun informasi dari proses *Request for Information* (*RFI*).\n* **Pemutakhiran Data:** Apabila terdapat perubahan data, *Vendor* atau *Supplier* dapat melakukan pemutakhiran dokumen administratif dan informasi tambahan lainnya secara mandiri.\n* **Pemanfaatan Data:** *Vendor List* digunakan sebagai bahan informasi dalam aktivitas *Category Management* atau penyeleksian calon penyedia dalam proses *Sourcing*. Berdasarkan amandemen PR 009/2025 Pasal 30 ayat (5), kepesertaan *Vendor* dalam pengadaan berfokus pada pemenuhan persyaratan legalitas, administratif, dan keuangan yang dipersyaratkan pada aturan berlaku serta dokumen pengadaan, tanpa kewajiban mutlak telah terdaftar sebelumnya pada *Vendor List*.\n* **Penyertaan dan Pemutakhiran Profil TKDN:** Dalam penyusunan dan pemutakhiran *database Vendor Management*, Perseroan melakukan pengembangan dan pengelolaan dengan menyertakan informasi atau dokumentasi penggunaan produk dalam negeri yang mengacu pada Daftar Inventarisasi Barang dan/atau Jasa Produksi Dalam Negeri terbitan Kementerian Perindustrian. Pemutakhiran profil TKDN ini bertujuan untuk:\n  * Menyediakan informasi profil TKDN *Vendor*;\n  * Merumuskan rencana dan strategi implementasi peningkatan TKDN;\n  * Memenuhi kebutuhan pelaporan dan *monitoring*; serta\n  * Melaksanakan pembinaan kepada *Vendor* dan/atau *Supplier*.\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"manajemen pengelolaan vendor database pendaftaran evaluasi\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 5 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x3 (0.30), PD 002A_2023 Kebijakan dan Kewenangan Pengada x2 (0.29)]\nLevel 2 (PR): 8 chunks [PR 016_2023 - Aktivitas Pengadaan Barang dan- x3 (0.35), PR 002_2025 - Pedoman Implementasi Tingkat Ko x4 (0.34), PR 009_2025 - Amandemen Pertama Peraturan Dir x1 (0.29)]\nLevel 3 (SE): 3 chunks [060_Surat_Edaran_VP_CGAE_Procurement_-_Manaje x3 (0.41)]\nLevel 4 (ND): 0 chunks [-]\nLevel 5 (Others): 5 chunks [Panduan Perubahan Data Perusahaan x3 (0.35), Dokumen Nilai Tambah_template x1 (0.34), Share_Guide DPL x1 (0.32)]\", \"judge\": \"LEVEL: 2\nDOC_TITLE: PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf\nQUOTE: Dalam melakukan penyusunan dan pemutakhiran manajemen data (database) Vendor management, Perseroan dapat melakukan pengembangan dan pengelolaan Vendor dengan penyertaan informasi atau dokumentasi penggunaan produk dalam negeri dengan mengacu kepada Daftar Inventarisasi Barang dan/atau Jasa Produksi Dalam Negeri\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": false,
+   "expected_level_in_tool": null,
+   "content_score": 35,
+   "best_chunk_pct": 0,
+   "slow": true,
+   "t_llm1": 5.93,
+   "t_tool": 36.34,
+   "t_llm2": 2.0,
+   "t_answer": 3.54,
+   "agent_log": [
+    {
+     "t": 5.93,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Bagaimana manajemen database vendor?\"}}"
+    },
+    {
+     "t": 42.27,
+     "event": "tool result received",
+     "detail": "7924 characters"
+    },
+    {
+     "t": 44.27,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 47.82,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5870, 'completion_tokens': 671, 'total_tokens': 6541, 'latency': 46.52481422794517}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5870,
+    "completion_tokens": 671,
+    "total_tokens": 6541,
+    "latency": 46.52481422794517
+   },
+   "nodes": [],
+   "prompt_tokens": 5870,
+   "direct": {
+    "ok": true,
+    "question": "Bagaimana manajemen database vendor?",
+    "query": "Bagaimana manajemen database vendor?",
+    "time": 42.67,
+    "wf_elapsed": 38.956388,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 3.12,
+      "error": null,
+      "start": 4.81,
+      "end": 4.84
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 4.77,
+      "error": null,
+      "start": 5.04,
+      "end": 9.26
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 2.41,
+      "error": null,
+      "start": 11.47,
+      "end": 11.66
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.13,
+      "error": null,
+      "start": 11.74,
+      "end": 11.76
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 8.48,
+      "error": null,
+      "count": 2,
+      "smin": 0.299,
+      "smax": 0.328,
+      "start": 13.54,
+      "end": 20.23
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 8.62,
+      "error": null,
+      "count": 8,
+      "smin": 0.315,
+      "smax": 0.359,
+      "start": 13.73,
+      "end": 20.38
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 8.91,
+      "error": null,
+      "count": 7,
+      "smin": 0.285,
+      "smax": 0.351,
+      "start": 12.19,
+      "end": 20.68
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 8.94,
+      "error": null,
+      "count": 5,
+      "smin": 0.284,
+      "smax": 0.312,
+      "start": 11.96,
+      "end": 20.7
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 8.97,
+      "error": null,
+      "count": 4,
+      "smin": 0.355,
+      "smax": 0.406,
+      "start": 13.26,
+      "end": 20.72
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 20.75,
+      "end": 20.9
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 10.91,
+      "error": null,
+      "start": 20.93,
+      "end": 31.73
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.1,
+      "error": null,
+      "info": "found=yes",
+      "start": 31.73,
+      "end": 31.84
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.15,
+      "error": null,
+      "start": 31.85,
+      "end": 31.94
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.37,
+      "error": null,
+      "start": 32.26,
+      "end": 32.27
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 1.29,
+      "error": null,
+      "count": 1,
+      "smin": 0.793,
+      "smax": 0.793,
+      "start": 32.37,
+      "end": 33.55
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.05,
+      "error": null,
+      "start": 33.58,
+      "end": 33.6
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.06,
+      "error": null,
+      "start": 33.62,
+      "end": 33.66
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 7.79,
+      "error": null,
+      "start": 33.7,
+      "end": 41.45
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 0.12,
+      "error": null,
+      "start": 41.46,
+      "end": 41.54
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.07,
+      "error": null,
+      "start": 41.57,
+      "end": 41.61
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.06,
+      "error": null,
+      "start": 41.63,
+      "end": 41.64
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "Hierarchy Judge (L1 -> L5) 10.91s"
+   },
+   "replay_diag": "replay also misses it: this query cannot find the document",
+   "time": 47.82,
+   "ttft": 44.27,
+   "answer": "Knowledge Level: Level 2 (PR)\nDocument source: [PR 002_2025 - Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAhsz2AIQH4TZ9Rz5Y6ScbhAa710uzzouyFvusLtW_gnF4?e=YNEbCL)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, manajemen data (*database*) atau daftar *Vendor* (*Vendor List*) di Perseroan dikelola secara terpadu oleh Fungsi Pengelola *Vendor* untuk keperluan *sourcing*, pengelolaan kinerja, serta pengintegrasian profil Tingkat Komponen Dalam Negeri (TKDN).\n\nKetentuan mengenai manajemen *database Vendor* diatur dalam Peraturan Direktur Keuangan dan Manajemen Risiko tentang Aktivitas Pengadaan Barang dan/atau Jasa (*Inbound Logistics*) (PR 016/2023 jo. PR 009/2025, Pasal 28–30) serta Pedoman Implementasi Tingkat Komponen Dalam Negeri (TKDN) (PR 002/2025, Pasal 6):\n\n* **Pengelolaan Terpadu dan Sumber Data:** *Daftar Vendor* (*Vendor List*) dikelola terpadu oleh Fungsi Pengelola *Vendor* menggunakan sumber internal dari sistem pendaftaran *Vendor* (*Vendor Registration System*) serta sumber eksternal berupa hasil riset pasar, publikasi asosiasi industri, maupun informasi dari proses *Request for Information* (*RFI*).\n* **Pemutakhiran Data:** Apabila terdapat perubahan data, *Vendor* atau *Supplier* dapat melakukan pemutakhiran dokumen administratif dan informasi tambahan lainnya secara mandiri.\n* **Pemanfaatan Data:** *Vendor List* digunakan sebagai bahan informasi dalam aktivitas *Category Management* atau penyeleksian calon penyedia dalam proses *Sourcing*. Berdasarkan amandemen PR 009/2025 Pasal 30 ayat (5), kepesertaan *Vendor* dalam pengadaan berfokus pada pemenuhan persyaratan legalitas, administratif, dan keuangan yang dipersyaratkan pada aturan berlaku serta dokumen pengadaan, tanpa kewajiban mutlak telah terdaftar sebelumnya pada *Vendor List*.\n* **Penyertaan dan Pemutakhiran Profil TKDN:** Dalam penyusunan dan pemutakhiran *database Vendor Management*, Perseroan melakukan pengembangan dan pengelolaan dengan menyertakan informasi atau dokumentasi penggunaan produk dalam negeri yang mengacu pada Daftar Inventarisasi Barang dan/atau Jasa Produksi Dalam Negeri terbitan Kementerian Perindustrian. Pemutakhiran profil TKDN ini bertujuan untuk:\n  * Menyediakan informasi profil TKDN *Vendor*;\n  * Merumuskan rencana dan strategi implementasi peningkatan TKDN;\n  * Memenuhi kebutuhan pelaporan dan *monitoring*; serta\n  * Melaksanakan pembinaan kepada *Vendor* dan/atau *Supplier*.",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.31",
+   "row": 2,
+   "question": "mau pengadaan tp impor boleh?",
+   "expected_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:24:38",
+   "status": "PASS",
+   "reason": "cited expected document",
+   "diag": "",
+   "cited_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "level": "Level 1 (PD)",
+   "sources": [
+    {
+     "level": "Level 1 (PD)",
+     "doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "mau pengadaan tp impor boleh?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\n**Procurement Hub Agent** bantu dulu, ya. Pengadaan barang dan/atau jasa impor diperbolehkan, namun hanya dalam kondisi tertentu karena Perseroan pada prinsipnya mengutamakan penggunaan produk dalam negeri.\n\nBerdasarkan *Peraturan Direksi tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan*, Pasal 6 ayat (2), pengadaan barang dan/atau jasa impor dapat dilakukan apabila memenuhi salah satu dari ketentuan berikut:\n- Barang dan/atau Jasa belum dapat diproduksi atau disediakan di dalam negeri; atau\n- Volume produksi, kapabilitas, dan/atau kualitas Produk Dalam Negeri tidak mampu memenuhi kebutuhan Perseroan.\n\nDi luar kondisi tersebut, sesuai Pasal 6 ayat (1), Perseroan tetap mengutamakan penggunaan barang, peralatan, jasa, dan sumber daya manusia dalam negeri yang memenuhi kriteria jumlah, kualitas, harga, dan waktu penyerahan dengan tetap mempertimbangkan aspek kualitas serta finansial ekonomis.' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='ketentuan pengadaan barang impor perseroan tkdn' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 6 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x6 (0.43)]\nLevel 2 (PR): 4 chunks [PR 002_2025 - Pedoman Implementasi Tingkat Ko x4 (0.41)]\nLevel 3 (SE): 1 chunks [060_Surat_Edaran_VP_CGAE_Procurement_-_Manaje x1 (0.31)]\nLevel 4 (ND): 0 chunks [-]\nLevel 5 (Others): 4 chunks [KR 047_2023 - Pembentukan Tim Peningkatan Tin x3 (0.33), Share_Guide DPL x1 (0.31)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 1\nDOC_TITLE: PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf\nQUOTE: Dalam kondisi tertentu, Pengadaan Barang dan/atau Jasa impor dapat dilakukan dengan ketentuan sebagai berikut: a. Barang dan/atau Jasa belum dapat diproduksi/disediakan di dalam negeri; atau b. Volume produksi/kapabilitas dan/atau kualitas Produk Dalam Negeri tidak mampu memenuhi kebutuhan.' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\n**Procurement Hub Agent** bantu dulu, ya. Pengadaan barang dan/atau jasa impor diperbolehkan, namun hanya dalam kondisi tertentu karena Perseroan pada prinsipnya mengutamakan penggunaan produk dalam negeri.\n\nBerdasarkan *Peraturan Direksi tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan*, Pasal 6 ayat (2), pengadaan barang dan/atau jasa impor dapat dilakukan apabila memenuhi salah satu dari ketentuan berikut:\n- Barang dan/atau Jasa belum dapat diproduksi atau disediakan di dalam negeri; atau\n- Volume produksi, kapabilitas, dan/atau kualitas Produk Dalam Negeri tidak mampu memenuhi kebutuhan Perseroan.\n\nDi luar kondisi tersebut, sesuai Pasal 6 ayat (1), Perseroan tetap mengutamakan penggunaan barang, peralatan, jasa, dan sumber daya manusia dalam negeri yang memenuhi kriteria jumlah, kualitas, harga, dan waktu penyerahan dengan tetap mempertimbangkan aspek kualitas serta finansial ekonomis.\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"ketentuan pengadaan barang impor perseroan tkdn\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 6 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x6 (0.43)]\nLevel 2 (PR): 4 chunks [PR 002_2025 - Pedoman Implementasi Tingkat Ko x4 (0.41)]\nLevel 3 (SE): 1 chunks [060_Surat_Edaran_VP_CGAE_Procurement_-_Manaje x1 (0.31)]\nLevel 4 (ND): 0 chunks [-]\nLevel 5 (Others): 4 chunks [KR 047_2023 - Pembentukan Tim Peningkatan Tin x3 (0.33), Share_Guide DPL x1 (0.31)]\", \"judge\": \"LEVEL: 1\nDOC_TITLE: PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf\nQUOTE: Dalam kondisi tertentu, Pengadaan Barang dan/atau Jasa impor dapat dilakukan dengan ketentuan sebagai berikut: a. Barang dan/atau Jasa belum dapat diproduksi/disediakan di dalam negeri; atau b. Volume produksi/kapabilitas dan/atau kualitas Produk Dalam Negeri tidak mampu memenuhi kebutuhan.\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": true,
+   "expected_level_in_tool": 9,
+   "content_score": 66,
+   "best_chunk_pct": 68,
+   "slow": false,
+   "t_llm1": 3.99,
+   "t_tool": 28.51,
+   "t_llm2": 1.92,
+   "t_answer": 1.43,
+   "agent_log": [
+    {
+     "t": 3.99,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"mau pengadaan tp impor boleh?\"}}"
+    },
+    {
+     "t": 32.5,
+     "event": "tool result received",
+     "detail": "4902 characters"
+    },
+    {
+     "t": 34.42,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 35.85,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5037, 'completion_tokens': 333, 'total_tokens': 5370, 'latency': 34.39896177899209}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5037,
+    "completion_tokens": 333,
+    "total_tokens": 5370,
+    "latency": 34.39896177899209
+   },
+   "nodes": [],
+   "prompt_tokens": 5037,
+   "direct": {
+    "ok": true,
+    "question": "mau pengadaan tp impor boleh?",
+    "query": "mau pengadaan tp impor boleh?",
+    "time": 56.3,
+    "wf_elapsed": 54.09735,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.16,
+      "error": null,
+      "start": 1.26,
+      "end": 1.26
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 13.53,
+      "error": null,
+      "start": 1.67,
+      "end": 14.66
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.05,
+      "error": null,
+      "start": 14.67,
+      "end": 14.7
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.14,
+      "error": null,
+      "start": 14.72,
+      "end": 14.84
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 11.33,
+      "error": null,
+      "count": 1,
+      "smin": 0.247,
+      "smax": 0.247,
+      "start": 19.02,
+      "end": 26.12
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 11.39,
+      "error": null,
+      "count": 6,
+      "smin": 0.298,
+      "smax": 0.362,
+      "start": 15.75,
+      "end": 26.18
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 11.42,
+      "error": null,
+      "count": 2,
+      "smin": 0.261,
+      "smax": 0.266,
+      "start": 19.04,
+      "end": 26.21
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 11.5,
+      "error": null,
+      "count": 8,
+      "smin": 0.283,
+      "smax": 0.35,
+      "start": 15.35,
+      "end": 26.24
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 11.6,
+      "error": null,
+      "count": 1,
+      "smin": 0.28,
+      "smax": 0.28,
+      "start": 18.2,
+      "end": 26.39
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.36,
+      "error": null,
+      "start": 26.69,
+      "end": 26.78
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 6.01,
+      "error": null,
+      "start": 27.1,
+      "end": 32.74
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.31,
+      "error": null,
+      "info": "found=yes",
+      "start": 32.99,
+      "end": 33.02
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 33.07,
+      "end": 33.07
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.02,
+      "error": null,
+      "start": 33.09,
+      "end": 33.09
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 6.22,
+      "error": null,
+      "count": 1,
+      "smin": 0.844,
+      "smax": 0.844,
+      "start": 33.15,
+      "end": 39.32
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.23,
+      "error": null,
+      "start": 39.5,
+      "end": 39.53
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.88,
+      "error": null,
+      "start": 40.34,
+      "end": 40.4
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 10.05,
+      "error": null,
+      "start": 40.8,
+      "end": 50.45
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 3.32,
+      "error": null,
+      "start": 53.55,
+      "end": 53.58
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.45,
+      "error": null,
+      "start": 53.94,
+      "end": 54.02
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.22,
+      "error": null,
+      "start": 54.14,
+      "end": 54.18
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "Gatekeeper & Query Builder 13.53s"
+   },
+   "replay_diag": "the agent's call had it but the replay did not: retrieval varies between identical calls",
+   "time": 35.85,
+   "ttft": 34.42,
+   "answer": "Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\n**Procurement Hub Agent** bantu dulu, ya. Pengadaan barang dan/atau jasa impor diperbolehkan, namun hanya dalam kondisi tertentu karena Perseroan pada prinsipnya mengutamakan penggunaan produk dalam negeri.\n\nBerdasarkan *Peraturan Direksi tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan*, Pasal 6 ayat (2), pengadaan barang dan/atau jasa impor dapat dilakukan apabila memenuhi salah satu dari ketentuan berikut:\n- Barang dan/atau Jasa belum dapat diproduksi atau disediakan di dalam negeri; atau\n- Volume produksi, kapabilitas, dan/atau kualitas Produk Dalam Negeri tidak mampu memenuhi kebutuhan Perseroan.\n\nDi luar kondisi tersebut, sesuai Pasal 6 ayat (1), Perseroan tetap mengutamakan penggunaan barang, peralatan, jasa, dan sumber daya manusia dalam negeri yang memenuhi kriteria jumlah, kualitas, harga, dan waktu penyerahan dengan tetap mempertimbangkan aspek kualitas serta finansial ekonomis.",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.36",
+   "row": 7,
+   "question": "TKDN tinggi pasti menang?",
+   "expected_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:24:46",
+   "status": "PASS",
+   "reason": "cited expected document",
+   "diag": "",
+   "cited_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "level": "Level 1 (PD)",
+   "sources": [
+    {
+     "level": "Level 1 (PD)",
+     "doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Apakah penawaran dengan nilai TKDN tinggi pasti menang dalam proses pengadaan di Telkomsel?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, penawaran dengan nilai TKDN yang lebih tinggi tidak serta-merta pasti menang dalam proses pengadaan.\n\nBerdasarkan *Peraturan Direksi Nomor /PD-00/ /2022 tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan*, Pasal 10 ayat (1), ketentuan terkait evaluasi TKDN adalah sebagai berikut:\n* **Pertimbangan Prioritas**: Vendor dengan persentase TKDN yang lebih besar memang memiliki prioritas yang lebih besar untuk ditunjuk sebagai *Supplier* (Pasal 10 ayat 1 huruf b).\n* **Faktor Evaluasi Lain**: Penetapan penunjukan tersebut tidak hanya didasarkan pada nilai TKDN, melainkan tetap memperhitungkan dan mempertimbangkan faktor harga serta keunggulan/kualitas teknis (Pasal 10 ayat 1 huruf a dan b).\n* **Mekanisme Formulasi**: Mekanisme, komposisi, maupun besaran formulasi penentuan vendor diatur lebih lanjut sesuai dengan prosedur pengadaan yang berlaku di Perseroan (Pasal 10 ayat 1 huruf c).' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='evaluasi bobot nilai TKDN kriteria pemenang pengadaan barang jasa Perseroan' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 6 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x6 (0.39)]\nLevel 2 (PR): 8 chunks [PR 002_2025 - Pedoman Implementasi Tingkat Ko x8 (0.42)]\nLevel 3 (SE): 3 chunks [092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.40), 2023_SE - Technical Tender Mechanism and Guid x1 (0.35)]\nLevel 4 (ND): 1 chunks [ND - Implementasi eDPL (2) x1 (0.32)]\nLevel 5 (Others): 2 chunks [Share_Guide DPL x2 (0.34)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 1\nDOC_TITLE: PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf\nQUOTE: Vendor dengan TKDN yang lebih besar memiliki prioritas yang lebih besar sebagai Supplier yang ditunjuk, dengan tetap mempertimbangkan faktor harga dan keunggulan teknis.' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, penawaran dengan nilai TKDN yang lebih tinggi tidak serta-merta pasti menang dalam proses pengadaan.\n\nBerdasarkan *Peraturan Direksi Nomor /PD-00/ /2022 tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan*, Pasal 10 ayat (1), ketentuan terkait evaluasi TKDN adalah sebagai berikut:\n* **Pertimbangan Prioritas**: Vendor dengan persentase TKDN yang lebih besar memang memiliki prioritas yang lebih besar untuk ditunjuk sebagai *Supplier* (Pasal 10 ayat 1 huruf b).\n* **Faktor Evaluasi Lain**: Penetapan penunjukan tersebut tidak hanya didasarkan pada nilai TKDN, melainkan tetap memperhitungkan dan mempertimbangkan faktor harga serta keunggulan/kualitas teknis (Pasal 10 ayat 1 huruf a dan b).\n* **Mekanisme Formulasi**: Mekanisme, komposisi, maupun besaran formulasi penentuan vendor diatur lebih lanjut sesuai dengan prosedur pengadaan yang berlaku di Perseroan (Pasal 10 ayat 1 huruf c).\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"evaluasi bobot nilai TKDN kriteria pemenang pengadaan barang jasa Perseroan\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 6 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x6 (0.39)]\nLevel 2 (PR): 8 chunks [PR 002_2025 - Pedoman Implementasi Tingkat Ko x8 (0.42)]\nLevel 3 (SE): 3 chunks [092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.40), 2023_SE - Technical Tender Mechanism and Guid x1 (0.35)]\nLevel 4 (ND): 1 chunks [ND - Implementasi eDPL (2) x1 (0.32)]\nLevel 5 (Others): 2 chunks [Share_Guide DPL x2 (0.34)]\", \"judge\": \"LEVEL: 1\nDOC_TITLE: PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf\nQUOTE: Vendor dengan TKDN yang lebih besar memiliki prioritas yang lebih besar sebagai Supplier yang ditunjuk, dengan tetap mempertimbangkan faktor harga dan keunggulan teknis.\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": true,
+   "expected_level_in_tool": 9,
+   "content_score": 100,
+   "best_chunk_pct": 100,
+   "slow": true,
+   "t_llm1": 5.97,
+   "t_tool": 29.08,
+   "t_llm2": 2.55,
+   "t_answer": 5.86,
+   "agent_log": [
+    {
+     "t": 5.97,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Apakah penawaran dengan nilai TKDN tinggi pasti menang dalam proses pengadaan di Telkomsel?\"}}"
+    },
+    {
+     "t": 35.05,
+     "event": "tool result received",
+     "detail": "4864 characters"
+    },
+    {
+     "t": 37.6,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 43.46,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5101, 'completion_tokens': 541, 'total_tokens': 5642, 'latency': 42.08985268406104}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5101,
+    "completion_tokens": 541,
+    "total_tokens": 5642,
+    "latency": 42.08985268406104
+   },
+   "nodes": [],
+   "prompt_tokens": 5101,
+   "direct": {
+    "ok": true,
+    "question": "TKDN tinggi pasti menang?",
+    "query": "Apakah penawaran dengan nilai TKDN tinggi pasti menang dalam proses pengadaan di Telkomsel?",
+    "time": 51.3,
+    "wf_elapsed": 47.581784,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 2.77,
+      "end": 2.77
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 3.8,
+      "error": null,
+      "start": 2.78,
+      "end": 6.52
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.2,
+      "error": null,
+      "start": 6.67,
+      "end": 6.68
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 6.73,
+      "end": 6.76
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 18.35,
+      "error": null,
+      "count": 0,
+      "smin": null,
+      "smax": null,
+      "start": 12.9,
+      "end": 25.09
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.58,
+      "error": null,
+      "count": 8,
+      "smin": 0.395,
+      "smax": 0.458,
+      "start": 7.99,
+      "end": 26.35
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.7,
+      "error": null,
+      "count": 10,
+      "smin": 0.367,
+      "smax": 0.398,
+      "start": 7.15,
+      "end": 26.44
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.84,
+      "error": null,
+      "count": 3,
+      "smin": 0.297,
+      "smax": 0.308,
+      "start": 12.12,
+      "end": 26.58
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.89,
+      "error": null,
+      "count": 5,
+      "smin": 0.307,
+      "smax": 0.331,
+      "start": 13.07,
+      "end": 26.64
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.21,
+      "error": null,
+      "start": 26.83,
+      "end": 26.87
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 5.58,
+      "error": null,
+      "start": 27.29,
+      "end": 32.45
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.09,
+      "error": null,
+      "info": "found=yes",
+      "start": 32.45,
+      "end": 32.53
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.2,
+      "error": null,
+      "start": 32.65,
+      "end": 32.71
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.57,
+      "error": null,
+      "start": 33.25,
+      "end": 33.27
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 3.31,
+      "error": null,
+      "count": 1,
+      "smin": 0.844,
+      "smax": 0.844,
+      "start": 33.44,
+      "end": 36.58
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.12,
+      "error": null,
+      "start": 36.67,
+      "end": 36.69
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 1.35,
+      "error": null,
+      "start": 37.09,
+      "end": 38.04
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 11.51,
+      "error": null,
+      "start": 40.83,
+      "end": 49.43
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 0.35,
+      "error": null,
+      "start": 49.65,
+      "end": 49.69
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.13,
+      "error": null,
+      "start": 49.72,
+      "end": 49.82
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.16,
+      "error": null,
+      "start": 49.86,
+      "end": 49.9
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "L5 Others Retrieval 19.89s"
+   },
+   "replay_diag": "the agent's call had it but the replay did not: retrieval varies between identical calls",
+   "time": 43.46,
+   "ttft": 37.6,
+   "answer": "Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, penawaran dengan nilai TKDN yang lebih tinggi tidak serta-merta pasti menang dalam proses pengadaan.\n\nBerdasarkan *Peraturan Direksi Nomor /PD-00/ /2022 tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan*, Pasal 10 ayat (1), ketentuan terkait evaluasi TKDN adalah sebagai berikut:\n* **Pertimbangan Prioritas**: Vendor dengan persentase TKDN yang lebih besar memang memiliki prioritas yang lebih besar untuk ditunjuk sebagai *Supplier* (Pasal 10 ayat 1 huruf b).\n* **Faktor Evaluasi Lain**: Penetapan penunjukan tersebut tidak hanya didasarkan pada nilai TKDN, melainkan tetap memperhitungkan dan mempertimbangkan faktor harga serta keunggulan/kualitas teknis (Pasal 10 ayat 1 huruf a dan b).\n* **Mekanisme Formulasi**: Mekanisme, komposisi, maupun besaran formulasi penentuan vendor diatur lebih lanjut sesuai dengan prosedur pengadaan yang berlaku di Perseroan (Pasal 10 ayat 1 huruf c).",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.32",
+   "row": 3,
+   "question": "Bagaimana memantau dan mengelola TKDN?",
+   "expected_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:24:43",
+   "status": "PASS",
+   "reason": "cited expected document",
+   "diag": "",
+   "cited_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "level": "Level 1 (PD)",
+   "sources": [
+    {
+     "level": "Level 1 (PD)",
+     "doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Bagaimana memantau dan mengelola TKDN?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, pemantauan (monitoring), evaluasi, dan pengelolaan Tingkat Komponen Dalam Negeri (TKDN) diatur dalam Peraturan Direksi tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan (khususnya Pasal 12 dan Pasal 13). \n\nAktivitas pemantauan, evaluasi, dan pengelolaan implementasi TKDN mencakup ketentuan berikut:\n\n1. **Aktivitas Monitoring dan Pelaporan TKDN (Pasal 12 ayat 1)**\n   - Pelaporan TKDN dilakukan secara periodik kepada Direksi Perseroan.\n   - Pelaporan TKDN disampaikan kepada instansi yang berwenang sesuai tenggat waktu yang ditetapkan, menggunakan format aturan yang berlaku serta disetujui oleh Direktur Utama atau pejabat lain yang ditunjuk.\n   - Perhitungan dan pelaporan TKDN dapat dibuat dan diintegrasikan dengan sistem ERP Perseroan untuk mendukung proses yang terintegrasi dengan pengadaan dan penerimaan barang/jasa.\n   - Melakukan *review* dan perbaikan proses peningkatan TKDN Perseroan, termasuk standardisasi kontraktual, registrasi *Vendor*, pemutakhiran *Supplier*, serta persyaratan dan sertifikasi Uji Coba Teknis & teknologi.\n   - Menerapkan kewajiban denda/sanksi atas realisasi TKDN pekerjaan *Vendor* yang tidak sesuai dengan target atau komitmen.\n   - Melakukan *review* pencapaian implementasi TKDN secara periodik untuk mengusulkan target pencapaian tahun berikutnya.\n\n2. **Aktivitas Evaluasi Pengelolaan TKDN (Pasal 12 ayat 2)**\n   - Melakukan edukasi dan evaluasi pengelolaan penyedia Barang dan/atau Jasa, seperti sosialisasi, verifikasi, serta audit *Supplier* atas pencapaian TKDN.\n   - Mendorong pihak *Supplier* untuk bekerja sama dengan *Vendor-Vendor* dalam negeri.\n   - Mengusulkan insentif kepada instansi yang berwenang (baik secara mandiri maupun melalui asosiasi industri telekomunikasi) untuk mendukung kebijakan implementasi TKDN.\n\n3. **Pengelolaan Kelembagaan Tim TKDN (Pasal 13)**\n   - Perseroan dapat membentuk Tim Peningkatan Penggunaan Produk Dalam Negeri Perseroan (\"Tim TKDN\") yang berdiri sendiri dan terpisah dari fungsi eksisting melalui Keputusan Direktur yang diterbitkan oleh Direktur Utama.\n   - Apabila Tim TKDN tidak dibentuk, maka aktivitas pengelolaan TKDN tetap dijalankan secara melekat pada fungsi-fungsi eksisting yang ada di Perseroan.' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='pemantauan pengelolaan implementasi TKDN perseroan' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 7 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x7 (0.43)]\nLevel 2 (PR): 4 chunks [PR 002_2025 - Pedoman Implementasi Tingkat Ko x4 (0.37)]\nLevel 3 (SE): 1 chunks [20. SE - Pengelolaan Kemitraan SIM Card 2024 x1 (0.26)]\nLevel 4 (ND): 0 chunks [-]\nLevel 5 (Others): 4 chunks [KR 047_2023 - Pembentukan Tim Peningkatan Tin x4 (0.36)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 1\nDOC_TITLE: PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf\nQUOTE: Monitoring dan/atau pelaporan terkait implementasi TKDN terdiri dari aktivitas seperti namun tidak terbatas pada: a. Pelaporan TKDN dilakukan secara periodik kepada Direksi Perseroan;' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, pemantauan (monitoring), evaluasi, dan pengelolaan Tingkat Komponen Dalam Negeri (TKDN) diatur dalam Peraturan Direksi tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan (khususnya Pasal 12 dan Pasal 13). \n\nAktivitas pemantauan, evaluasi, dan pengelolaan implementasi TKDN mencakup ketentuan berikut:\n\n1. **Aktivitas Monitoring dan Pelaporan TKDN (Pasal 12 ayat 1)**\n   - Pelaporan TKDN dilakukan secara periodik kepada Direksi Perseroan.\n   - Pelaporan TKDN disampaikan kepada instansi yang berwenang sesuai tenggat waktu yang ditetapkan, menggunakan format aturan yang berlaku serta disetujui oleh Direktur Utama atau pejabat lain yang ditunjuk.\n   - Perhitungan dan pelaporan TKDN dapat dibuat dan diintegrasikan dengan sistem ERP Perseroan untuk mendukung proses yang terintegrasi dengan pengadaan dan penerimaan barang/jasa.\n   - Melakukan *review* dan perbaikan proses peningkatan TKDN Perseroan, termasuk standardisasi kontraktual, registrasi *Vendor*, pemutakhiran *Supplier*, serta persyaratan dan sertifikasi Uji Coba Teknis & teknologi.\n   - Menerapkan kewajiban denda/sanksi atas realisasi TKDN pekerjaan *Vendor* yang tidak sesuai dengan target atau komitmen.\n   - Melakukan *review* pencapaian implementasi TKDN secara periodik untuk mengusulkan target pencapaian tahun berikutnya.\n\n2. **Aktivitas Evaluasi Pengelolaan TKDN (Pasal 12 ayat 2)**\n   - Melakukan edukasi dan evaluasi pengelolaan penyedia Barang dan/atau Jasa, seperti sosialisasi, verifikasi, serta audit *Supplier* atas pencapaian TKDN.\n   - Mendorong pihak *Supplier* untuk bekerja sama dengan *Vendor-Vendor* dalam negeri.\n   - Mengusulkan insentif kepada instansi yang berwenang (baik secara mandiri maupun melalui asosiasi industri telekomunikasi) untuk mendukung kebijakan implementasi TKDN.\n\n3. **Pengelolaan Kelembagaan Tim TKDN (Pasal 13)**\n   - Perseroan dapat membentuk Tim Peningkatan Penggunaan Produk Dalam Negeri Perseroan (\\\"Tim TKDN\\\") yang berdiri sendiri dan terpisah dari fungsi eksisting melalui Keputusan Direktur yang diterbitkan oleh Direktur Utama.\n   - Apabila Tim TKDN tidak dibentuk, maka aktivitas pengelolaan TKDN tetap dijalankan secara melekat pada fungsi-fungsi eksisting yang ada di Perseroan.\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"pemantauan pengelolaan implementasi TKDN perseroan\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 7 chunks [PD 004 - Implementasi Tingkat Komponen Dalam  x7 (0.43)]\nLevel 2 (PR): 4 chunks [PR 002_2025 - Pedoman Implementasi Tingkat Ko x4 (0.37)]\nLevel 3 (SE): 1 chunks [20. SE - Pengelolaan Kemitraan SIM Card 2024 x1 (0.26)]\nLevel 4 (ND): 0 chunks [-]\nLevel 5 (Others): 4 chunks [KR 047_2023 - Pembentukan Tim Peningkatan Tin x4 (0.36)]\", \"judge\": \"LEVEL: 1\nDOC_TITLE: PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf\nQUOTE: Monitoring dan/atau pelaporan terkait implementasi TKDN terdiri dari aktivitas seperti namun tidak terbatas pada: a. Pelaporan TKDN dilakukan secara periodik kepada Direksi Perseroan;\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": true,
+   "expected_level_in_tool": 9,
+   "content_score": 86,
+   "best_chunk_pct": 89,
+   "slow": true,
+   "t_llm1": 5.62,
+   "t_tool": 30.43,
+   "t_llm2": 1.91,
+   "t_answer": 2.51,
+   "agent_log": [
+    {
+     "t": 5.62,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Bagaimana memantau dan mengelola TKDN?\"}}"
+    },
+    {
+     "t": 36.05,
+     "event": "tool result received",
+     "detail": "7408 characters"
+    },
+    {
+     "t": 37.96,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 40.47,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5687, 'completion_tokens': 693, 'total_tokens': 6380, 'latency': 38.3453815219691}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5687,
+    "completion_tokens": 693,
+    "total_tokens": 6380,
+    "latency": 38.3453815219691
+   },
+   "nodes": [],
+   "prompt_tokens": 5687,
+   "direct": {
+    "ok": true,
+    "question": "Bagaimana memantau dan mengelola TKDN?",
+    "query": "Bagaimana memantau dan mengelola TKDN?",
+    "time": 57.09,
+    "wf_elapsed": 54.767497,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.09,
+      "error": null,
+      "start": 1.37,
+      "end": 1.38
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 8.4,
+      "error": null,
+      "start": 1.59,
+      "end": 9.74
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.07,
+      "error": null,
+      "start": 9.76,
+      "end": 9.79
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.37,
+      "error": null,
+      "start": 10.0,
+      "end": 10.16
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 18.75,
+      "error": null,
+      "count": 0,
+      "smin": null,
+      "smax": null,
+      "start": 15.93,
+      "end": 28.88
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.31,
+      "error": null,
+      "count": 4,
+      "smin": 0.328,
+      "smax": 0.339,
+      "start": 16.06,
+      "end": 29.46
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.43,
+      "error": null,
+      "count": 1,
+      "smin": 0.259,
+      "smax": 0.259,
+      "start": 15.21,
+      "end": 29.55
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.57,
+      "error": null,
+      "count": 8,
+      "smin": 0.348,
+      "smax": 0.383,
+      "start": 12.61,
+      "end": 29.69
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.74,
+      "error": null,
+      "count": 9,
+      "smin": 0.359,
+      "smax": 0.387,
+      "start": 11.65,
+      "end": 29.86
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.15,
+      "error": null,
+      "start": 29.96,
+      "end": 30.04
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 5.61,
+      "error": null,
+      "start": 30.41,
+      "end": 35.61
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.19,
+      "error": null,
+      "info": "found=yes",
+      "start": 35.67,
+      "end": 35.8
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.61,
+      "error": null,
+      "start": 36.34,
+      "end": 36.35
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.38,
+      "error": null,
+      "start": 36.56,
+      "end": 36.73
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 3.12,
+      "error": null,
+      "count": 1,
+      "smin": 0.844,
+      "smax": 0.844,
+      "start": 37.55,
+      "end": 39.76
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.95,
+      "error": null,
+      "start": 40.15,
+      "end": 40.7
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 3.48,
+      "error": null,
+      "start": 43.91,
+      "end": 43.95
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 11.91,
+      "error": null,
+      "start": 44.1,
+      "end": 55.87
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 0.11,
+      "error": null,
+      "start": 55.87,
+      "end": 55.96
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.09,
+      "error": null,
+      "start": 55.97,
+      "end": 56.05
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 56.06,
+      "end": 56.06
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "L1 PD Retrieval 19.74s"
+   },
+   "replay_diag": "the agent's call had it but the replay did not: retrieval varies between identical calls",
+   "time": 40.47,
+   "ttft": 37.96,
+   "answer": "Knowledge Level: Level 1 (PD)\nDocument source: [PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAmXLjQccnCRolshHnttduzASvDDHTgb0knxDRNf-QSOfA?e=yJcgMu)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, pemantauan (monitoring), evaluasi, dan pengelolaan Tingkat Komponen Dalam Negeri (TKDN) diatur dalam Peraturan Direksi tentang Implementasi Tingkat Komponen Dalam Negeri (TKDN) Dalam Aktivitas Belanja Perseroan (khususnya Pasal 12 dan Pasal 13). \n\nAktivitas pemantauan, evaluasi, dan pengelolaan implementasi TKDN mencakup ketentuan berikut:\n\n1. **Aktivitas Monitoring dan Pelaporan TKDN (Pasal 12 ayat 1)**\n   - Pelaporan TKDN dilakukan secara periodik kepada Direksi Perseroan.\n   - Pelaporan TKDN disampaikan kepada instansi yang berwenang sesuai tenggat waktu yang ditetapkan, menggunakan format aturan yang berlaku serta disetujui oleh Direktur Utama atau pejabat lain yang ditunjuk.\n   - Perhitungan dan pelaporan TKDN dapat dibuat dan diintegrasikan dengan sistem ERP Perseroan untuk mendukung proses yang terintegrasi dengan pengadaan dan penerimaan barang/jasa.\n   - Melakukan *review* dan perbaikan proses peningkatan TKDN Perseroan, termasuk standardisasi kontraktual, registrasi *Vendor*, pemutakhiran *Supplier*, serta persyaratan dan sertifikasi Uji Coba Teknis & teknologi.\n   - Menerapkan kewajiban denda/sanksi atas realisasi TKDN pekerjaan *Vendor* yang tidak sesuai dengan target atau komitmen.\n   - Melakukan *review* pencapaian implementasi TKDN secara periodik untuk mengusulkan target pencapaian tahun berikutnya.\n\n2. **Aktivitas Evaluasi Pengelolaan TKDN (Pasal 12 ayat 2)**\n   - Melakukan edukasi dan evaluasi pengelolaan penyedia Barang dan/atau Jasa, seperti sosialisasi, verifikasi, serta audit *Supplier* atas pencapaian TKDN.\n   - Mendorong pihak *Supplier* untuk bekerja sama dengan *Vendor-Vendor* dalam negeri.\n   - Mengusulkan insentif kepada instansi yang berwenang (baik secara mandiri maupun melalui asosiasi industri telekomunikasi) untuk mendukung kebijakan implementasi TKDN.\n\n3. **Pengelolaan Kelembagaan Tim TKDN (Pasal 13)**\n   - Perseroan dapat membentuk Tim Peningkatan Penggunaan Produk Dalam Negeri Perseroan (\"Tim TKDN\") yang berdiri sendiri dan terpisah dari fungsi eksisting melalui Keputusan Direktur yang diterbitkan oleh Direktur Utama.\n   - Apabila Tim TKDN tidak dibentuk, maka aktivitas pengelolaan TKDN tetap dijalankan secara melekat pada fungsi-fungsi eksisting yang ada di Perseroan.",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.37",
+   "row": 8,
+   "question": "gmn pembelian langsung ecommerce",
+   "expected_doc": "PD 005 2024_Amandemen Pertama Terhadap Peraturan Direksi Perseroan Nomor 002A 2023 Barang dan Jasa_.pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:25:15",
+   "status": "FAIL",
+   "reason": "cited '2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf' instead of expected 'PD 005 2024_Amandemen Pertama Terhadap Peraturan Direksi Perseroan Nomor 002A 2023 Barang dan Jasa_.pdf'",
+   "diag": "retrieval: expected doc not returned by tool",
+   "cited_doc": "2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf",
+   "level": "Level 3 (SE)",
+   "sources": [
+    {
+     "level": "Level 3 (SE)",
+     "doc": "2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQDsEswQo7OnQp4D_CH4PVpZAeoHJtFn2v98rzGlKkK0d8M?e=8JoOIf"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Bagaimana tata cara atau ketentuan pembelian langsung melalui ecommerce?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 3 (SE)\nDocument source: [2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQDsEswQo7OnQp4D_CH4PVpZAeoHJtFn2v98rzGlKkK0d8M?e=8JoOIf)\n\nBerdasarkan regulasi yang **Procurement Hub Agent** temukan, pembelian langsung melalui *e-commerce* diperuntukkan bagi kebutuhan taktis, operasional, dan bisnis Perseroan dengan batas kewenangan transaksi maksimal sebesar Rp50.000.000 (lima puluh juta rupiah). Ketentuan ini diatur dalam **Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil** serta **Surat Edaran VP CGAE tentang Petunjuk Teknis Aktivitas Pengadaan Barang dan/atau Jasa** (Bagian 3.2.3.4 dan Sub-bab Sourcing Pembelian Langsung).\n\nKetentuan dan tata cara pelaksanaannya adalah sebagai berikut:\n\n* **Syarat dan Ketentuan Transaksi:**\n  * Menggunakan anggaran operasional (*Operational Expenditure* / OPEX) dan Pemesan (*User*) wajib memastikan ketersediaan alokasi anggaran sesuai peruntukannya sebelum bertransaksi.\n  * Nilai setiap transaksi dilakukan secara utuh (tidak boleh dipecah-pecah), sudah termasuk PPh dan belum termasuk PPN, dengan batas nilai transaksi maksimal ≤ Rp50 Juta.\n  * Transaksi diarahkan menggunakan platform *e-commerce* PaDI UMKM (atau dilakukan melalui mekanisme FPJP) dengan memprioritaskan penyedia berstatus Usaha Mikro dan Kecil (UMKM).\n  * Dapat dilaksanakan di lingkungan Kantor Pusat, Area, Regional, maupun *Branch* Perseroan.\n  * Kategori pengadaan barang/jasa yang diperbolehkan mencakup:\n    1. *Meeting, Incentive, Convention and Exhibition* (MICE);\n    2. *Support Sales, Marketing Event and Merchandise*;\n    3. *Promotional Materials*;\n    4. *Office facility, stationery & general support*;\n    5. *Civil, Mechanical, and Electrical* (CME).\n\n* **Tata Cara Pemilihan dan Pemesanan:**\n  * Pemesan memilih penyedia di sistem elektronik dengan mempertimbangkan faktor harga, kesanggupan pengiriman, serta ketersediaan barang/jasa pada periode tersebut, atau menyalin perbandingan harga dari beberapa penyedia lain jika diperlukan.\n  * Transaksi wajib menyertakan informasi, keterangan, dan/atau penjelasan terkait peruntukan dan distribusi pada formulir pemesanan.\n  * Pemesan memprioritaskan mekanisme pembelian menggunakan penagihan (*invoicing*) yang jatuh tempo maksimal 30 (tiga puluh) hari kalender atau menyesuaikan dengan kebijakan Perseroan.\n\n* **Tata Cara Penerimaan Barang/Jasa:**\n  * Pemesan wajib memeriksa kesesuaian kualitas, kuantitas, dan kelayakan barang/jasa terhadap *scope of work* atau *bill of quantity*.\n  * Pemesan melakukan konfirmasi penerimaan barang/jasa secara elektronik pada platform *e-commerce* sebagai tanda bukti sah.\n  * Apabila terdapat ketidaksesuaian atau cacat, Pemesan wajib segera menyampaikan laporan komplain kepada pihak penyelenggara platform maupun penyedia dengan melampirkan bukti visual (foto atau rekaman video) untuk meminta retur atau perbaikan.\n\n* **Tata Cara Pembayaran dan Pertanggungjawaban:**\n  * Proses pembayaran hanya dapat dilakukan setelah barang dan/atau jasa selesai diterima dan dikonfirmasi oleh Pemesan.\n  * Pertanggungjawaban transaksi dilakukan melalui proses penagihan (*invoicing*) atau penggantian (*reimbursement*) dalam waktu sesingkat-singkatnya dengan persetujuan pejabat *User*.\n  * Dokumen transaksi diunggah melalui aplikasi kesisteman pembayaran (*A/P management*) atau FPJP dengan melampirkan bukti transaksi yang sah, seperti *invoice*, kuitansi, surat tagihan, tanda terima (*receipt*), dan faktur pajak sesuai regulasi transaksi keuangan yang berlaku.' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='ketentuan tata cara pembelian langsung e-commerce pengadaan barang jasa' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 0 chunks [-]\nLevel 2 (PR): 7 chunks [PR 016_2023 - Aktivitas Pengadaan Barang dan- x7 (0.39)]\nLevel 3 (SE): 4 chunks [2021_Surat Edaran Pengaturan Perdagangan Mela x2 (0.45), 092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.44)]\nLevel 4 (ND): 2 chunks [ND - Implementasi eDPL (2) x2 (0.32)]\nLevel 5 (Others): 1 chunks [Share_Guide DPL x1 (0.36)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 3\nDOC_TITLE: 2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf\nQUOTE: Pemesan memilih Penyedia Barang dan/atau Jasa di Sistem Elektronik dengan mempertimbangkan faktor harga, kesanggupan pengiriman, maupun ketersediaan barang dan/atau jasa pada periode tersebut atau jika diperlukan menyalin perbandingan harga dari beberapa penyedia lainnya pada periode tersebut;' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 3 (SE)\nDocument source: [2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQDsEswQo7OnQp4D_CH4PVpZAeoHJtFn2v98rzGlKkK0d8M?e=8JoOIf)\n\nBerdasarkan regulasi yang **Procurement Hub Agent** temukan, pembelian langsung melalui *e-commerce* diperuntukkan bagi kebutuhan taktis, operasional, dan bisnis Perseroan dengan batas kewenangan transaksi maksimal sebesar Rp50.000.000 (lima puluh juta rupiah). Ketentuan ini diatur dalam **Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil** serta **Surat Edaran VP CGAE tentang Petunjuk Teknis Aktivitas Pengadaan Barang dan/atau Jasa** (Bagian 3.2.3.4 dan Sub-bab Sourcing Pembelian Langsung).\n\nKetentuan dan tata cara pelaksanaannya adalah sebagai berikut:\n\n* **Syarat dan Ketentuan Transaksi:**\n  * Menggunakan anggaran operasional (*Operational Expenditure* / OPEX) dan Pemesan (*User*) wajib memastikan ketersediaan alokasi anggaran sesuai peruntukannya sebelum bertransaksi.\n  * Nilai setiap transaksi dilakukan secara utuh (tidak boleh dipecah-pecah), sudah termasuk PPh dan belum termasuk PPN, dengan batas nilai transaksi maksimal ≤ Rp50 Juta.\n  * Transaksi diarahkan menggunakan platform *e-commerce* PaDI UMKM (atau dilakukan melalui mekanisme FPJP) dengan memprioritaskan penyedia berstatus Usaha Mikro dan Kecil (UMKM).\n  * Dapat dilaksanakan di lingkungan Kantor Pusat, Area, Regional, maupun *Branch* Perseroan.\n  * Kategori pengadaan barang/jasa yang diperbolehkan mencakup:\n    1. *Meeting, Incentive, Convention and Exhibition* (MICE);\n    2. *Support Sales, Marketing Event and Merchandise*;\n    3. *Promotional Materials*;\n    4. *Office facility, stationery & general support*;\n    5. *Civil, Mechanical, and Electrical* (CME).\n\n* **Tata Cara Pemilihan dan Pemesanan:**\n  * Pemesan memilih penyedia di sistem elektronik dengan mempertimbangkan faktor harga, kesanggupan pengiriman, serta ketersediaan barang/jasa pada periode tersebut, atau menyalin perbandingan harga dari beberapa penyedia lain jika diperlukan.\n  * Transaksi wajib menyertakan informasi, keterangan, dan/atau penjelasan terkait peruntukan dan distribusi pada formulir pemesanan.\n  * Pemesan memprioritaskan mekanisme pembelian menggunakan penagihan (*invoicing*) yang jatuh tempo maksimal 30 (tiga puluh) hari kalender atau menyesuaikan dengan kebijakan Perseroan.\n\n* **Tata Cara Penerimaan Barang/Jasa:**\n  * Pemesan wajib memeriksa kesesuaian kualitas, kuantitas, dan kelayakan barang/jasa terhadap *scope of work* atau *bill of quantity*.\n  * Pemesan melakukan konfirmasi penerimaan barang/jasa secara elektronik pada platform *e-commerce* sebagai tanda bukti sah.\n  * Apabila terdapat ketidaksesuaian atau cacat, Pemesan wajib segera menyampaikan laporan komplain kepada pihak penyelenggara platform maupun penyedia dengan melampirkan bukti visual (foto atau rekaman video) untuk meminta retur atau perbaikan.\n\n* **Tata Cara Pembayaran dan Pertanggungjawaban:**\n  * Proses pembayaran hanya dapat dilakukan setelah barang dan/atau jasa selesai diterima dan dikonfirmasi oleh Pemesan.\n  * Pertanggungjawaban transaksi dilakukan melalui proses penagihan (*invoicing*) atau penggantian (*reimbursement*) dalam waktu sesingkat-singkatnya dengan persetujuan pejabat *User*.\n  * Dokumen transaksi diunggah melalui aplikasi kesisteman pembayaran (*A/P management*) atau FPJP dengan melampirkan bukti transaksi yang sah, seperti *invoice*, kuitansi, surat tagihan, tanda terima (*receipt*), dan faktur pajak sesuai regulasi transaksi keuangan yang berlaku.\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"ketentuan tata cara pembelian langsung e-commerce pengadaan barang jasa\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 0 chunks [-]\nLevel 2 (PR): 7 chunks [PR 016_2023 - Aktivitas Pengadaan Barang dan- x7 (0.39)]\nLevel 3 (SE): 4 chunks [2021_Surat Edaran Pengaturan Perdagangan Mela x2 (0.45), 092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.44)]\nLevel 4 (ND): 2 chunks [ND - Implementasi eDPL (2) x2 (0.32)]\nLevel 5 (Others): 1 chunks [Share_Guide DPL x1 (0.36)]\", \"judge\": \"LEVEL: 3\nDOC_TITLE: 2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf\nQUOTE: Pemesan memilih Penyedia Barang dan/atau Jasa di Sistem Elektronik dengan mempertimbangkan faktor harga, kesanggupan pengiriman, maupun ketersediaan barang dan/atau jasa pada periode tersebut atau jika diperlukan menyalin perbandingan harga dari beberapa penyedia lainnya pada periode tersebut;\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": false,
+   "expected_level_in_tool": null,
+   "content_score": 89,
+   "best_chunk_pct": 0,
+   "slow": true,
+   "t_llm1": 5.59,
+   "t_tool": 59.76,
+   "t_llm2": 2.13,
+   "t_answer": 4.49,
+   "agent_log": [
+    {
+     "t": 5.59,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Bagaimana tata cara atau ketentuan pembelian langsung melalui ecommerce?\"}}"
+    },
+    {
+     "t": 65.35,
+     "event": "tool result received",
+     "detail": "9946 characters"
+    },
+    {
+     "t": 67.48,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 71.97,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 6267, 'completion_tokens': 952, 'total_tokens': 7219, 'latency': 70.61521400899801}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 6267,
+    "completion_tokens": 952,
+    "total_tokens": 7219,
+    "latency": 70.61521400899801
+   },
+   "nodes": [],
+   "prompt_tokens": 6267,
+   "direct": {
+    "ok": true,
+    "question": "gmn pembelian langsung ecommerce",
+    "query": "Bagaimana tata cara atau ketentuan pembelian langsung melalui ecommerce?",
+    "time": 35.9,
+    "wf_elapsed": 30.89209,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.05,
+      "error": null,
+      "start": 4.03,
+      "end": 4.04
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 4.0,
+      "error": null,
+      "start": 4.19,
+      "end": 8.02
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.1,
+      "error": null,
+      "start": 8.04,
+      "end": 8.06
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.11,
+      "error": null,
+      "start": 8.14,
+      "end": 8.16
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 13.05,
+      "error": null,
+      "count": 3,
+      "smin": 0.274,
+      "smax": 0.289,
+      "start": 12.25,
+      "end": 21.2
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 13.16,
+      "error": null,
+      "count": 3,
+      "smin": 0.323,
+      "smax": 0.415,
+      "start": 12.13,
+      "end": 21.32
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 13.61,
+      "error": null,
+      "count": 7,
+      "smin": 0.246,
+      "smax": 0.309,
+      "start": 9.09,
+      "end": 21.79
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 13.87,
+      "error": null,
+      "count": 1,
+      "smin": 0.292,
+      "smax": 0.292,
+      "start": 12.32,
+      "end": 22.03
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 13.93,
+      "error": null,
+      "count": 1,
+      "smin": 0.314,
+      "smax": 0.314,
+      "start": 8.54,
+      "end": 22.08
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.07,
+      "error": null,
+      "start": 22.11,
+      "end": 22.19
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 3.26,
+      "error": null,
+      "start": 22.21,
+      "end": 25.45
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.07,
+      "error": null,
+      "info": "found=yes",
+      "start": 25.45,
+      "end": 25.48
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.03,
+      "error": null,
+      "start": 25.49,
+      "end": 25.5
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.07,
+      "error": null,
+      "start": 25.53,
+      "end": 25.57
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 1.88,
+      "error": null,
+      "count": 1,
+      "smin": 0.827,
+      "smax": 0.827,
+      "start": 25.95,
+      "end": 27.44
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.14,
+      "error": null,
+      "start": 27.56,
+      "end": 27.57
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.15,
+      "error": null,
+      "start": 27.63,
+      "end": 27.73
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 6.74,
+      "error": null,
+      "start": 27.82,
+      "end": 34.42
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 0.14,
+      "error": null,
+      "start": 34.48,
+      "end": 34.56
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.15,
+      "error": null,
+      "start": 34.58,
+      "end": 34.71
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.28,
+      "error": null,
+      "start": 34.87,
+      "end": 34.88
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "L1 PD Retrieval 13.93s"
+   },
+   "replay_diag": "replay also misses it: this query cannot find the document",
+   "time": 71.97,
+   "ttft": 67.48,
+   "answer": "Knowledge Level: Level 3 (SE)\nDocument source: [2021_Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil_.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQDsEswQo7OnQp4D_CH4PVpZAeoHJtFn2v98rzGlKkK0d8M?e=8JoOIf)\n\nBerdasarkan regulasi yang **Procurement Hub Agent** temukan, pembelian langsung melalui *e-commerce* diperuntukkan bagi kebutuhan taktis, operasional, dan bisnis Perseroan dengan batas kewenangan transaksi maksimal sebesar Rp50.000.000 (lima puluh juta rupiah). Ketentuan ini diatur dalam **Surat Edaran Pengaturan Perdagangan Melalui Sistem Elektronik Untuk Pemberdayaan Usaha Mikro, Kecil** serta **Surat Edaran VP CGAE tentang Petunjuk Teknis Aktivitas Pengadaan Barang dan/atau Jasa** (Bagian 3.2.3.4 dan Sub-bab Sourcing Pembelian Langsung).\n\nKetentuan dan tata cara pelaksanaannya adalah sebagai berikut:\n\n* **Syarat dan Ketentuan Transaksi:**\n  * Menggunakan anggaran operasional (*Operational Expenditure* / OPEX) dan Pemesan (*User*) wajib memastikan ketersediaan alokasi anggaran sesuai peruntukannya sebelum bertransaksi.\n  * Nilai setiap transaksi dilakukan secara utuh (tidak boleh dipecah-pecah), sudah termasuk PPh dan belum termasuk PPN, dengan batas nilai transaksi maksimal ≤ Rp50 Juta.\n  * Transaksi diarahkan menggunakan platform *e-commerce* PaDI UMKM (atau dilakukan melalui mekanisme FPJP) dengan memprioritaskan penyedia berstatus Usaha Mikro dan Kecil (UMKM).\n  * Dapat dilaksanakan di lingkungan Kantor Pusat, Area, Regional, maupun *Branch* Perseroan.\n  * Kategori pengadaan barang/jasa yang diperbolehkan mencakup:\n    1. *Meeting, Incentive, Convention and Exhibition* (MICE);\n    2. *Support Sales, Marketing Event and Merchandise*;\n    3. *Promotional Materials*;\n    4. *Office facility, stationery & general support*;\n    5. *Civil, Mechanical, and Electrical* (CME).\n\n* **Tata Cara Pemilihan dan Pemesanan:**\n  * Pemesan memilih penyedia di sistem elektronik dengan mempertimbangkan faktor harga, kesanggupan pengiriman, serta ketersediaan barang/jasa pada periode tersebut, atau menyalin perbandingan harga dari beberapa penyedia lain jika diperlukan.\n  * Transaksi wajib menyertakan informasi, keterangan, dan/atau penjelasan terkait peruntukan dan distribusi pada formulir pemesanan.\n  * Pemesan memprioritaskan mekanisme pembelian menggunakan penagihan (*invoicing*) yang jatuh tempo maksimal 30 (tiga puluh) hari kalender atau menyesuaikan dengan kebijakan Perseroan.\n\n* **Tata Cara Penerimaan Barang/Jasa:**\n  * Pemesan wajib memeriksa kesesuaian kualitas, kuantitas, dan kelayakan barang/jasa terhadap *scope of work* atau *bill of quantity**.\n  * Pemesan melakukan konfirmasi penerimaan barang/jasa secara elektronik pada platform *e-commerce* sebagai tanda bukti sah.\n  * Apabila terdapat ketidaksesuaian atau cacat, Pemesan wajib segera menyampaikan laporan komplain kepada pihak penyelenggara platform maupun penyedia dengan melampirkan bukti visual (foto atau rekaman video) untuk meminta retur atau perbaikan.\n\n* **Tata Cara Pembayaran dan Pertanggungjawaban:**\n  * Proses pembayaran hanya dapat dilakukan setelah barang dan/atau jasa selesai diterima dan dikonfirmasi oleh Pemesan.\n  * Pertanggungjawaban transaksi dilakukan melalui proses penagihan (*invoicing*) atau penggantian (*reimbursement*) dalam waktu sesingkat-singkatnya dengan persetujuan pejabat *User*.\n  * Dokumen transaksi diunggah melalui aplikasi kesisteman pembayaran (*A/P management*) atau FPJP dengan melampirkan bukti transaksi yang sah, seperti *invoice*, kuitansi, surat tagihan, tanda terima (*receipt*), dan faktur pajak sesuai regulasi transaksi keuangan yang berlaku.",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.35",
+   "row": 6,
+   "question": "Cara membuat EDPL baru?",
+   "expected_doc": "[TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:25:09",
+   "status": "PASS",
+   "reason": "cited expected document",
+   "diag": "",
+   "cited_doc": "\\[TSEL\\] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf",
+   "level": "Level 5 (Others)",
+   "sources": [
+    {
+     "level": "Level 5 (Others)",
+     "doc": "\\[TSEL\\] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAzKRtrBfiISbtINWt-mAbGAd-Vz4quwNUW7zjBm-H_wHk?e=v6CtRi"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Cara membuat EDPL baru?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "\\\\[TSEL\\\\] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 5 (Others)\nDocument source: [\\\\[TSEL\\\\] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAzKRtrBfiISbtINWt-mAbGAd-Vz4quwNUW7zjBm-H_wHk?e=v6CtRi)\n\n**Procurement Hub Agent** bantu jawab, ya. Untuk membuat EDPL baru, Anda dapat memulainya dengan menekan tombol **Create New** pada halaman utama aplikasi EDPL, sebagaimana diatur dalam *[TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1*, Bagian 2 (*Create New EDPL*).\n\nTahapan lengkap pembuatan EDPL baru adalah sebagai berikut:\n* **Halaman Pertama:** Pada *homepage* EDPL, klik tombol **Create New**, lalu lengkapi seluruh kolom wajib (*mandatory fields*) pada halaman pertama dan klik **Next**.\n* **Halaman Kedua:** Isi seluruh kolom wajib pada halaman kedua. Khusus untuk Kriteria Penunjukan Langsung \"Lanjutan Dari Pekerjaan Sebelumnya Yang Tidak Terelakkan\", pilih atau cari Nomor Kontrak/PO yang relevan. Jika Nomor Kontrak/PO tidak tercantum dalam daftar, cari dan pilih opsi **Others**, kemudian masukkan Nomor Kontrak/PO secara manual pada kolom input yang tersedia.\n* **Pengisian Form Evaluasi / Kriteria Khusus:**\n  * Untuk kriteria \"Sinergi Group Yang Memberikan Nilai Tambah\" atau \"Critical\", klik **Next** dan sistem akan mengarahkan ke Form Evaluasi Penunjukan Langsung (Untuk Kriteria Selain Supplier Tunggal) atau Form 2B. Lengkapi semua kolom wajib yang diminta.\n* **Form Penilaian Performansi Supplier (Form 3):** Nilai parameter akan terisi secara otomatis berdasarkan Nomor Kontrak/PO yang dipilih. Jika Nomor Kontrak/PO diisi secara manual, tentukan parameter serta bobot nilainya secara manual. Pada pertanyaan *\"Apakah pekerjaan sebelumnya di evaluasi oleh unit anda?\"*:\n  * Pilih **No**: Lampiran Form 3 (*Attachment Form 3*) bersifat wajib (*mandatory*).\n  * Pilih **Yes**: Lampiran Form 3 bersifat tidak wajib (*not mandatory*).\n* **Penyelesaian dan Pengajuan:** Lengkapi semua kolom wajib, kemudian klik **Next** untuk melihat ringkasan (*Summary Penilaian Performansi Supplier*). Klik tombol **Preview** atau **Next** untuk masuk ke halaman pratinjau sebelum melakukan pengajuan akhir (*submit*).' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='pembuatan pengajuan EDPL evaluasi penunjukan langsung' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 2 chunks [PD 002A_2023 Kebijakan dan Kewenangan Pengada x1 (0.34), PD 005 2024_Amandemen Pertama Terhadap Peratu x1 (0.28)]\nLevel 2 (PR): 4 chunks [PR 016_2023 - Aktivitas Pengadaan Barang dan- x3 (0.33), PR 009_2025 - Amandemen Pertama Peraturan Dir x1 (0.30)]\nLevel 3 (SE): 2 chunks [092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.39)]\nLevel 4 (ND): 4 chunks [ND - Implementasi eDPL (2) x4 (0.45)]\nLevel 5 (Others): 2 chunks [[TSEL] – User Guide EDPL Enhancement (2024) f x2 (0.41)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 5\nDOC_TITLE: [TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf\nQUOTE: On EDPL homepage, click on Create New button.' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 5 (Others)\nDocument source: [\\\\[TSEL\\\\] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAzKRtrBfiISbtINWt-mAbGAd-Vz4quwNUW7zjBm-H_wHk?e=v6CtRi)\n\n**Procurement Hub Agent** bantu jawab, ya. Untuk membuat EDPL baru, Anda dapat memulainya dengan menekan tombol **Create New** pada halaman utama aplikasi EDPL, sebagaimana diatur dalam *[TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1*, Bagian 2 (*Create New EDPL*).\n\nTahapan lengkap pembuatan EDPL baru adalah sebagai berikut:\n* **Halaman Pertama:** Pada *homepage* EDPL, klik tombol **Create New**, lalu lengkapi seluruh kolom wajib (*mandatory fields*) pada halaman pertama dan klik **Next**.\n* **Halaman Kedua:** Isi seluruh kolom wajib pada halaman kedua. Khusus untuk Kriteria Penunjukan Langsung \\\"Lanjutan Dari Pekerjaan Sebelumnya Yang Tidak Terelakkan\\\", pilih atau cari Nomor Kontrak/PO yang relevan. Jika Nomor Kontrak/PO tidak tercantum dalam daftar, cari dan pilih opsi **Others**, kemudian masukkan Nomor Kontrak/PO secara manual pada kolom input yang tersedia.\n* **Pengisian Form Evaluasi / Kriteria Khusus:**\n  * Untuk kriteria \\\"Sinergi Group Yang Memberikan Nilai Tambah\\\" atau \\\"Critical\\\", klik **Next** dan sistem akan mengarahkan ke Form Evaluasi Penunjukan Langsung (Untuk Kriteria Selain Supplier Tunggal) atau Form 2B. Lengkapi semua kolom wajib yang diminta.\n* **Form Penilaian Performansi Supplier (Form 3):** Nilai parameter akan terisi secara otomatis berdasarkan Nomor Kontrak/PO yang dipilih. Jika Nomor Kontrak/PO diisi secara manual, tentukan parameter serta bobot nilainya secara manual. Pada pertanyaan *\\\"Apakah pekerjaan sebelumnya di evaluasi oleh unit anda?\\\"*:\n  * Pilih **No**: Lampiran Form 3 (*Attachment Form 3*) bersifat wajib (*mandatory*).\n  * Pilih **Yes**: Lampiran Form 3 bersifat tidak wajib (*not mandatory*).\n* **Penyelesaian dan Pengajuan:** Lengkapi semua kolom wajib, kemudian klik **Next** untuk melihat ringkasan (*Summary Penilaian Performansi Supplier*). Klik tombol **Preview** atau **Next** untuk masuk ke halaman pratinjau sebelum melakukan pengajuan akhir (*submit*).\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"pembuatan pengajuan EDPL evaluasi penunjukan langsung\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 2 chunks [PD 002A_2023 Kebijakan dan Kewenangan Pengada x1 (0.34), PD 005 2024_Amandemen Pertama Terhadap Peratu x1 (0.28)]\nLevel 2 (PR): 4 chunks [PR 016_2023 - Aktivitas Pengadaan Barang dan- x3 (0.33), PR 009_2025 - Amandemen Pertama Peraturan Dir x1 (0.30)]\nLevel 3 (SE): 2 chunks [092 SE VP CGAE Petunjuk Teknis Aktivitas Peng x2 (0.39)]\nLevel 4 (ND): 4 chunks [ND - Implementasi eDPL (2) x4 (0.45)]\nLevel 5 (Others): 2 chunks [[TSEL] – User Guide EDPL Enhancement (2024) f x2 (0.41)]\", \"judge\": \"LEVEL: 5\nDOC_TITLE: [TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf\nQUOTE: On EDPL homepage, click on Create New button.\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": true,
+   "expected_level_in_tool": 9,
+   "content_score": 51,
+   "best_chunk_pct": 0,
+   "slow": true,
+   "t_llm1": 17.33,
+   "t_tool": 27.98,
+   "t_llm2": 3.08,
+   "t_answer": 17.69,
+   "agent_log": [
+    {
+     "t": 17.33,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Cara membuat EDPL baru?\"}}"
+    },
+    {
+     "t": 45.31,
+     "event": "tool result received",
+     "detail": "6586 characters"
+    },
+    {
+     "t": 48.39,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 66.08,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5563, 'completion_tokens': 593, 'total_tokens': 6156, 'latency': 64.7712588669965}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5563,
+    "completion_tokens": 593,
+    "total_tokens": 6156,
+    "latency": 64.7712588669965
+   },
+   "nodes": [],
+   "prompt_tokens": 5563,
+   "direct": {
+    "ok": true,
+    "question": "Cara membuat EDPL baru?",
+    "query": "Cara membuat EDPL baru?",
+    "time": 42.13,
+    "wf_elapsed": 40.049027,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.12,
+      "error": null,
+      "start": 1.15,
+      "end": 1.16
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 3.47,
+      "error": null,
+      "start": 1.62,
+      "end": 4.6
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.67,
+      "error": null,
+      "start": 5.12,
+      "end": 5.23
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 6.47,
+      "error": null,
+      "start": 11.29,
+      "end": 11.62
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 14.25,
+      "error": null,
+      "count": 1,
+      "smin": 0.349,
+      "smax": 0.349,
+      "start": 16.54,
+      "end": 25.82
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 14.49,
+      "error": null,
+      "count": 3,
+      "smin": 0.383,
+      "smax": 0.427,
+      "start": 16.61,
+      "end": 26.07
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 15.13,
+      "error": null,
+      "count": 2,
+      "smin": 0.25,
+      "smax": 0.252,
+      "start": 12.84,
+      "end": 26.63
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 15.09,
+      "error": null,
+      "count": 4,
+      "smin": 0.236,
+      "smax": 0.25,
+      "start": 13.33,
+      "end": 26.65
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 15.3,
+      "error": null,
+      "count": 3,
+      "smin": 0.261,
+      "smax": 0.29,
+      "start": 15.69,
+      "end": 26.87
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.09,
+      "error": null,
+      "start": 26.95,
+      "end": 26.99
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 2.95,
+      "error": null,
+      "start": 26.99,
+      "end": 29.92
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.1,
+      "error": null,
+      "info": "found=yes",
+      "start": 29.97,
+      "end": 29.99
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.1,
+      "error": null,
+      "start": 30.04,
+      "end": 30.08
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.25,
+      "error": null,
+      "start": 30.29,
+      "end": 30.32
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 5.54,
+      "error": null,
+      "count": 1,
+      "smin": 0.754,
+      "smax": 0.754,
+      "start": 31.07,
+      "end": 35.84
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 35.88,
+      "end": 35.92
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.12,
+      "error": null,
+      "start": 36.02,
+      "end": 36.03
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 4.85,
+      "error": null,
+      "start": 36.27,
+      "end": 40.89
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 0.11,
+      "error": null,
+      "start": 40.91,
+      "end": 40.99
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.05,
+      "error": null,
+      "start": 41.0,
+      "end": 41.03
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.06,
+      "error": null,
+      "start": 41.05,
+      "end": 41.07
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "L3 SE Retrieval 15.3s"
+   },
+   "replay_diag": "the agent's call had it but the replay did not: retrieval varies between identical calls",
+   "time": 66.08,
+   "ttft": 48.39,
+   "answer": "Knowledge Level: Level 5 (Others)\nDocument source: [\\[TSEL\\] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQAzKRtrBfiISbtINWt-mAbGAd-Vz4quwNUW7zjBm-H_wHk?e=v6CtRi)\n\n**Procurement Hub Agent** bantu jawab, ya. Untuk membuat EDPL baru, Anda dapat memulainya dengan menekan tombol **Create New** pada halaman utama aplikasi EDPL, sebagaimana diatur dalam *[TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1*, Bagian 2 (*Create New EDPL*).\n\nTahapan lengkap pembuatan EDPL baru adalah sebagai berikut:\n* **Halaman Pertama:** Pada *homepage* EDPL, klik tombol **Create New**, lalu lengkapi seluruh kolom wajib (*mandatory fields*) pada halaman pertama dan klik **Next**.\n* **Halaman Kedua:** Isi seluruh kolom wajib pada halaman kedua. Khusus untuk Kriteria Penunjukan Langsung \"Lanjutan Dari Pekerjaan Sebelumnya Yang Tidak Terelakkan\", pilih atau cari Nomor Kontrak/PO yang relevan. Jika Nomor Kontrak/PO tidak tercantum dalam daftar, cari dan pilih opsi **Others**, kemudian masukkan Nomor Kontrak/PO secara manual pada kolom input yang tersedia.\n* **Pengisian Form Evaluasi / Kriteria Khusus:**\n  * Untuk kriteria \"Sinergi Group Yang Memberikan Nilai Tambah\" atau \"Critical\", klik **Next** dan sistem akan mengarahkan ke Form Evaluasi Penunjukan Langsung (Untuk Kriteria Selain Supplier Tunggal) atau Form 2B. Lengkapi semua kolom wajib yang diminta.\n* **Form Penilaian Performansi Supplier (Form 3):** Nilai parameter akan terisi secara otomatis berdasarkan Nomor Kontrak/PO yang dipilih. Jika Nomor Kontrak/PO diisi secara manual, tentukan parameter serta bobot nilainya secara manual. Pada pertanyaan *\"Apakah pekerjaan sebelumnya di evaluasi oleh unit anda?\"*:\n  * Pilih **No**: Lampiran Form 3 (*Attachment Form 3*) bersifat wajib (*mandatory*).\n  * Pilih **Yes**: Lampiran Form 3 bersifat tidak wajib (*not mandatory*).\n* **Penyelesaian dan Pengajuan:** Lengkapi semua kolom wajib, kemudian klik **Next** untuk melihat ringkasan (*Summary Penilaian Performansi Supplier*). Klik tombol **Preview** atau **Next** untuk masuk ke halaman pratinjau sebelum melakukan pengajuan akhir (*submit*).",
+   "ranking": ""
+  },
+  {
+   "id": "TS-01.34",
+   "row": 5,
+   "question": "Bagaimana alur Agreement Paralel hingga PO di SIENNA?",
+   "expected_doc": "ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf",
+   "kind": "document",
+   "ts": "2026-11-10T15:25:08",
+   "status": "PASS",
+   "reason": "cited expected document",
+   "diag": "",
+   "cited_doc": "ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf",
+   "level": "Level 4 (ND)",
+   "sources": [
+    {
+     "level": "Level 4 (ND)",
+     "doc": "ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf",
+     "url": "https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQCopKWQqaEeQotBfXtzsB-XAeVo_Oozxg9R1F0518BYcgM?e=xifCHp"
+    }
+   ],
+   "tool_calls": 1,
+   "agent_query": "Bagaimana alur Agreement Paralel hingga PO di SIENNA?",
+   "agent_question": "",
+   "tool_docs": [
+    {
+     "level": "",
+     "doc": "ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf"
+    }
+   ],
+   "level_counts": "PD0 PR0 SE0 ND0 OT0",
+   "tool_text": "variable_name='answer' variable_value='Knowledge Level: Level 4 (ND)\nDocument source: [ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQCopKWQqaEeQotBfXtzsB-XAeVo_Oozxg9R1F0518BYcgM?e=xifCHp)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, alur penerbitan Agreement secara paralel hingga Purchase Order (PO) di SIENNA memungkinkan pembuatan Outline Agreement (OA) diproses bersamaan dengan proses penandatanganan dokumen kontrak (Kontrak Payung atau Kontrak Induk) agar pemrosesan ePaper, Purchase Requisition (PR), dan PO dapat dipercepat.\n\nKetentuan ini diatur dalam Nota Dinas No. 0044/LO.01/PG-01/III/2021 tentang Pengaturan Penerbitan Agreement secara Paralel (khususnya Butir 4 dan Butir 3.e), dengan tahapan alur sebagai berikut:\n\n* **Pembuatan OA Draft**: Membuat OA di SIENNA dengan tipe dokumen \"*Contract Draft*\" (atau \"*Amendment Draft*\" untuk amandemen kontrak) dengan melampirkan Berita Acara Komersial (porsi komersial bersifat final) dan draf dokumen kontrak. Berita Acara Komersial wajib menyatakan adanya kesepakatan komersial serta mencantumkan klausul khusus bahwa MoM/risalah rapat menjadi dasar pembuatan OA dan PO akan diterbitkan jika kontrak telah ditandatangani.\n* **Persetujuan dan Publikasi OA Draft**: Melakukan proses persetujuan OA \"*Contract Draft*\" / \"*Amendment Draft*\" di SIENNA (mengikuti level kewenangan Agreement MPA/Kontrak Induk tanpa melibatkan Fungsi Legal), kemudian di-*publish*.\n* **Pembuatan ePaper dan PR**: Fungsi Pengguna (User) membuat ePaper dan PR dengan menggunakan rujukan nomor OA draft yang telah berstatus *published*.\n* **Pembuatan PO di SIENNA**: PO dibuat dari PR yang diajukan oleh Fungsi User. Sesuai pengaturan sistem, persetujuan PO oleh *non-final approver* sudah dapat dilakukan pada tahap ini, namun PO belum dapat disetujui oleh *final approver*.\n* **Penandatanganan Kontrak**: Dokumen kontrak ditandatangani oleh pejabat Fungsi Pengadaan yang berwenang sesuai limit kewenangan Agreement MPA atau Kontrak Induk.\n* **Pembuatan OA Final**: OA kembali diproses di SIENNA dengan mengubah tipe dokumen menjadi \"*Contract*\" (atau \"*Amendment*\") dengan melampirkan salinan kontrak yang telah ditandatangani (minimal oleh pejabat Telkomsel).\n* **Persetujuan dan Publikasi OA Final**: Melakukan proses persetujuan OA \"*Contract*\" / \"*Amendment*\" (mengikuti level kewenangan GM Fungsi Pengadaan) di SIENNA, kemudian di-*publish*.\n* **Persetujuan Akhir PO**: *Final approver* melakukan persetujuan (*approval*) atas PO setelah OA bertipe dokumen \"*Contract*\" atau \"*Amendment*\" resmi disetujui dan di-*publish*.' stream=Falsevariable_name='intent' variable_value='factual' stream=Falsevariable_name='lang' variable_value='id' stream=Falsevariable_name='search_query' variable_value='alur penerbitan agreement paralel persetujuan PO SIENNA' stream=Falsevariable_name='target_level' variable_value='0' stream=Falsevariable_name='retrieved' variable_value='Level 1 (PD): 3 chunks [PD 002A_2023 Kebijakan dan Kewenangan Pengada x3 (0.29)]\nLevel 2 (PR): 6 chunks [PR 009_2025 - Amandemen Pertama Peraturan Dir x1 (0.33), PR 016_2023 - Aktivitas Pengadaan Barang dan- x5 (0.28)]\nLevel 3 (SE): 5 chunks [SE Bersama Pengaturan Hirarki Persetujuan Agr x5 (0.43)]\nLevel 4 (ND): 6 chunks [ND Pengaturan Penerbitan Agreement secara Par x6 (0.50)]\nLevel 5 (Others): 5 chunks [TSEL ERP - User Manual for Agreement Parallel x1 (0.41), Panduan Akses Verona & SIENNA x2 (0.36), Sosialisasi - Penerbitan Agreement Paralel x2 (0.34)]' stream=Falsevariable_name='judge' variable_value='LEVEL: 4\nDOC_TITLE: ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf\nQUOTE: Secara paralel, pembuatan OA di SIENNA dapat dilakukan bersamaan dengan persetujuan dokumen kontrak (Kontrak Payung atau Kontrak Induk) dengan proses sebagai berikut (dengan ilustrasi alur proses di Lampiran 1):' stream=Falsevariable_name='evidence_check' variable_value='quote verified' stream=False{\"answer\": \"Knowledge Level: Level 4 (ND)\nDocument source: [ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQCopKWQqaEeQotBfXtzsB-XAeVo_Oozxg9R1F0518BYcgM?e=xifCHp)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, alur penerbitan Agreement secara paralel hingga Purchase Order (PO) di SIENNA memungkinkan pembuatan Outline Agreement (OA) diproses bersamaan dengan proses penandatanganan dokumen kontrak (Kontrak Payung atau Kontrak Induk) agar pemrosesan ePaper, Purchase Requisition (PR), dan PO dapat dipercepat.\n\nKetentuan ini diatur dalam Nota Dinas No. 0044/LO.01/PG-01/III/2021 tentang Pengaturan Penerbitan Agreement secara Paralel (khususnya Butir 4 dan Butir 3.e), dengan tahapan alur sebagai berikut:\n\n* **Pembuatan OA Draft**: Membuat OA di SIENNA dengan tipe dokumen \\\"*Contract Draft*\\\" (atau \\\"*Amendment Draft*\\\" untuk amandemen kontrak) dengan melampirkan Berita Acara Komersial (porsi komersial bersifat final) dan draf dokumen kontrak. Berita Acara Komersial wajib menyatakan adanya kesepakatan komersial serta mencantumkan klausul khusus bahwa MoM/risalah rapat menjadi dasar pembuatan OA dan PO akan diterbitkan jika kontrak telah ditandatangani.\n* **Persetujuan dan Publikasi OA Draft**: Melakukan proses persetujuan OA \\\"*Contract Draft*\\\" / \\\"*Amendment Draft*\\\" di SIENNA (mengikuti level kewenangan Agreement MPA/Kontrak Induk tanpa melibatkan Fungsi Legal), kemudian di-*publish*.\n* **Pembuatan ePaper dan PR**: Fungsi Pengguna (User) membuat ePaper dan PR dengan menggunakan rujukan nomor OA draft yang telah berstatus *published*.\n* **Pembuatan PO di SIENNA**: PO dibuat dari PR yang diajukan oleh Fungsi User. Sesuai pengaturan sistem, persetujuan PO oleh *non-final approver* sudah dapat dilakukan pada tahap ini, namun PO belum dapat disetujui oleh *final approver*.\n* **Penandatanganan Kontrak**: Dokumen kontrak ditandatangani oleh pejabat Fungsi Pengadaan yang berwenang sesuai limit kewenangan Agreement MPA atau Kontrak Induk.\n* **Pembuatan OA Final**: OA kembali diproses di SIENNA dengan mengubah tipe dokumen menjadi \\\"*Contract*\\\" (atau \\\"*Amendment*\\\") dengan melampirkan salinan kontrak yang telah ditandatangani (minimal oleh pejabat Telkomsel).\n* **Persetujuan dan Publikasi OA Final**: Melakukan proses persetujuan OA \\\"*Contract*\\\" / \\\"*Amendment*\\\" (mengikuti level kewenangan GM Fungsi Pengadaan) di SIENNA, kemudian di-*publish*.\n* **Persetujuan Akhir PO**: *Final approver* melakukan persetujuan (*approval*) atas PO setelah OA bertipe dokumen \\\"*Contract*\\\" atau \\\"*Amendment*\\\" resmi disetujui dan di-*publish*.\", \"intent\": \"factual\", \"lang\": \"id\", \"search_query\": \"alur penerbitan agreement paralel persetujuan PO SIENNA\", \"target_level\": \"0\", \"retrieved\": \"Level 1 (PD): 3 chunks [PD 002A_2023 Kebijakan dan Kewenangan Pengada x3 (0.29)]\nLevel 2 (PR): 6 chunks [PR 009_2025 - Amandemen Pertama Peraturan Dir x1 (0.33), PR 016_2023 - Aktivitas Pengadaan Barang dan- x5 (0.28)]\nLevel 3 (SE): 5 chunks [SE Bersama Pengaturan Hirarki Persetujuan Agr x5 (0.43)]\nLevel 4 (ND): 6 chunks [ND Pengaturan Penerbitan Agreement secara Par x6 (0.50)]\nLevel 5 (Others): 5 chunks [TSEL ERP - User Manual for Agreement Parallel x1 (0.41), Panduan Akses Verona & SIENNA x2 (0.36), Sosialisasi - Penerbitan Agreement Paralel x2 (0.34)]\", \"judge\": \"LEVEL: 4\nDOC_TITLE: ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf\nQUOTE: Secara paralel, pembuatan OA di SIENNA dapat dilakukan bersamaan dengan persetujuan dokumen kontrak (Kontrak Payung atau Kontrak Induk) dengan proses sebagai berikut (dengan ilustrasi alur proses di Lampiran 1):\", \"evidence_check\": \"quote verified\"}",
+   "tool_log": "",
+   "retrieved": [],
+   "expected_in_tool": true,
+   "expected_level_in_tool": 9,
+   "content_score": 77,
+   "best_chunk_pct": 80,
+   "slow": true,
+   "t_llm1": 6.26,
+   "t_tool": 34.99,
+   "t_llm2": 3.52,
+   "t_answer": 20.27,
+   "agent_log": [
+    {
+     "t": 6.26,
+     "event": "tool call",
+     "detail": "procurement_search {\"procurement_search\": {\"query\": \"Bagaimana alur Agreement Paralel hingga PO di SIENNA?\"}}"
+    },
+    {
+     "t": 41.25,
+     "event": "tool result received",
+     "detail": "7944 characters"
+    },
+    {
+     "t": 44.77,
+     "event": "first answer token",
+     "detail": ""
+    },
+    {
+     "t": 65.04,
+     "event": "answer complete",
+     "detail": "{'prompt_tokens': 5881, 'completion_tokens': 715, 'total_tokens': 6596, 'latency': 63.588552311994135}"
+    }
+   ],
+   "usage": {
+    "prompt_tokens": 5881,
+    "completion_tokens": 715,
+    "total_tokens": 6596,
+    "latency": 63.588552311994135
+   },
+   "nodes": [],
+   "prompt_tokens": 5881,
+   "direct": {
+    "ok": true,
+    "question": "Bagaimana alur Agreement Paralel hingga PO di SIENNA?",
+    "query": "Bagaimana alur Agreement Paralel hingga PO di SIENNA?",
+    "time": 45.88,
+    "wf_elapsed": 43.878311,
+    "nodes": [
+     {
+      "title": "Start",
+      "type": "start",
+      "status": "succeeded",
+      "elapsed": 0.02,
+      "error": null,
+      "start": 1.05,
+      "end": 1.05
+     },
+     {
+      "title": "Gatekeeper & Query Builder",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 3.96,
+      "error": null,
+      "start": 1.45,
+      "end": 4.98
+     },
+     {
+      "title": "Parse Gatekeeper",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.14,
+      "error": null,
+      "start": 5.09,
+      "end": 5.1
+     },
+     {
+      "title": "Intent Router",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.89,
+      "error": null,
+      "start": 5.7,
+      "end": 5.99
+     },
+     {
+      "title": "L4 ND Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 18.7,
+      "error": null,
+      "count": 6,
+      "smin": 0.379,
+      "smax": 0.418,
+      "start": 9.97,
+      "end": 24.66
+     },
+     {
+      "title": "L2 PR Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 19.16,
+      "error": null,
+      "count": 3,
+      "smin": 0.237,
+      "smax": 0.271,
+      "start": 7.62,
+      "end": 25.11
+     },
+     {
+      "title": "L1 PD Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 20.09,
+      "error": null,
+      "count": 4,
+      "smin": 0.221,
+      "smax": 0.236,
+      "start": 6.51,
+      "end": 26.05
+     },
+     {
+      "title": "L5 Others Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 20.71,
+      "error": null,
+      "count": 5,
+      "smin": 0.305,
+      "smax": 0.34,
+      "start": 10.02,
+      "end": 26.66
+     },
+     {
+      "title": "L3 SE Retrieval",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 20.87,
+      "error": null,
+      "count": 3,
+      "smin": 0.359,
+      "smax": 0.375,
+      "start": 9.85,
+      "end": 26.82
+     },
+     {
+      "title": "Build Level-Labelled Context",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.13,
+      "error": null,
+      "start": 26.92,
+      "end": 26.97
+     },
+     {
+      "title": "Hierarchy Judge (L1 -> L5)",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 4.28,
+      "error": null,
+      "start": 27.34,
+      "end": 31.24
+     },
+     {
+      "title": "Pick Level, Source & URL",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.51,
+      "error": null,
+      "info": "found=yes",
+      "start": 31.42,
+      "end": 31.73
+     },
+     {
+      "title": "Answered?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 0.76,
+      "error": null,
+      "start": 32.21,
+      "end": 32.41
+     },
+     {
+      "title": "URL in metadata?",
+      "type": "if-else",
+      "status": "succeeded",
+      "elapsed": 2.47,
+      "error": null,
+      "start": 34.61,
+      "end": 34.87
+     },
+     {
+      "title": "URL Mapping Lookup",
+      "type": "knowledge-retrieval",
+      "status": "succeeded",
+      "elapsed": 2.49,
+      "error": null,
+      "count": 1,
+      "smin": 0.748,
+      "smax": 0.748,
+      "start": 34.97,
+      "end": 37.31
+     },
+     {
+      "title": "Resolve URL (one-to-one)",
+      "type": "code",
+      "status": "succeeded",
+      "elapsed": 0.47,
+      "error": null,
+      "start": 37.71,
+      "end": 37.72
+     },
+     {
+      "title": "Document Source",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.14,
+      "error": null,
+      "start": 37.76,
+      "end": 37.9
+     },
+     {
+      "title": "Final Answer",
+      "type": "llm",
+      "status": "succeeded",
+      "elapsed": 6.61,
+      "error": null,
+      "start": 37.94,
+      "end": 44.47
+     },
+     {
+      "title": "Assemble 2-Block Output",
+      "type": "template-transform",
+      "status": "succeeded",
+      "elapsed": 0.34,
+      "error": null,
+      "start": 44.74,
+      "end": 44.77
+     },
+     {
+      "title": "Answer",
+      "type": "variable-aggregator",
+      "status": "succeeded",
+      "elapsed": 0.08,
+      "error": null,
+      "start": 44.78,
+      "end": 44.85
+     },
+     {
+      "title": "End",
+      "type": "end",
+      "status": "succeeded",
+      "elapsed": 0.07,
+      "error": null,
+      "start": 44.86,
+      "end": 44.86
+     }
+    ],
+    "ranking": "",
+    "level_counts": "",
+    "expected_in_direct": false,
+    "best_chunk_pct": 0,
+    "slowest_node": "L3 SE Retrieval 20.87s"
+   },
+   "replay_diag": "the agent's call had it but the replay did not: retrieval varies between identical calls",
+   "time": 65.04,
+   "ttft": 44.77,
+   "answer": "Knowledge Level: Level 4 (ND)\nDocument source: [ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf](https://365tsel.sharepoint.com/:b:/s/ProcurementAssuranceandComplianceDepartment/IQCopKWQqaEeQotBfXtzsB-XAeVo_Oozxg9R1F0518BYcgM?e=xifCHp)\n\nMenurut dokumen yang bisa **Procurement Hub Agent** baca, alur penerbitan Agreement secara paralel hingga Purchase Order (PO) di SIENNA memungkinkan pembuatan Outline Agreement (OA) diproses bersamaan dengan proses penandatanganan dokumen kontrak (Kontrak Payung atau Kontrak Induk) agar pemrosesan ePaper, Purchase Requisition (PR), dan PO dapat dipercepat.\n\nKetentuan ini diatur dalam Nota Dinas No. 0044/LO.01/PG-01/III/2021 tentang Pengaturan Penerbitan Agreement secara Paralel (khususnya Butir 4 dan Butir 3.e), dengan tahapan alur sebagai berikut:\n\n* **Pembuatan OA Draft**: Membuat OA di SIENNA dengan tipe dokumen \"*Contract Draft*\" (atau \"*Amendment Draft*\" untuk amandemen kontrak) dengan melampirkan Berita Acara Komersial (porsi komersial bersifat final) dan draf dokumen kontrak. Berita Acara Komersial wajib menyatakan adanya kesepakatan komersial serta mencantumkan klausul khusus bahwa MoM/risalah rapat menjadi dasar pembuatan OA dan PO akan diterbitkan jika kontrak telah ditandatangani.\n* **Persetujuan dan Publikasi OA Draft**: Melakukan proses persetujuan OA \"*Contract Draft*\" / \"*Amendment Draft*\" di SIENNA (mengikuti level kewenangan Agreement MPA/Kontrak Induk tanpa melibatkan Fungsi Legal), kemudian di-*publish*.\n* **Pembuatan ePaper dan PR**: Fungsi Pengguna (User) membuat ePaper dan PR dengan menggunakan rujukan nomor OA draft yang telah berstatus *published*.\n* **Pembuatan PO di SIENNA**: PO dibuat dari PR yang diajukan oleh Fungsi User. Sesuai pengaturan sistem, persetujuan PO oleh *non-final approver* sudah dapat dilakukan pada tahap ini, namun PO belum dapat disetujui oleh *final approver*.\n* **Penandatanganan Kontrak**: Dokumen kontrak ditandatangani oleh pejabat Fungsi Pengadaan yang berwenang sesuai limit kewenangan Agreement MPA atau Kontrak Induk.\n* **Pembuatan OA Final**: OA kembali diproses di SIENNA dengan mengubah tipe dokumen menjadi \"*Contract*\" (atau \"*Amendment*\") dengan melampirkan salinan kontrak yang telah ditandatangani (minimal oleh pejabat Telkomsel).\n* **Persetujuan dan Publikasi OA Final**: Melakukan proses persetujuan OA \"*Contract*\" / \"*Amendment*\" (mengikuti level kewenangan GM Fungsi Pengadaan) di SIENNA, kemudian di-*publish*.\n* **Persetujuan Akhir PO**: *Final approver* melakukan persetujuan (*approval*) atas PO setelah OA bertipe dokumen \"*Contract*\" atau \"*Amendment*\" resmi disetujui dan di-*publish*.",
+   "ranking": ""
+  }
+ ]
+}

@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Procurement Test Runner</title>
+<style>
+:root{
+  --bg:#f3efe6;--surface:#fffdf8;--sunk:#ece7db;--ink:#1b1a17;--ink2:#47443d;--mut:#79756a;--line:#e1dbcc;--line2:#cdc6b4;
+  --acc:#2347e0;--acc-ink:#fff;--acc-soft:#e4e9fb;
+  --pass:#1a7f45;--fail:#c8392c;--err:#a2610c;
+  --pass-bg:#e3f3e8;--fail-bg:#fae7e3;--err-bg:#f9eed6;
+  --shadow:0 18px 50px rgba(30,24,10,.18);
+  --mono:ui-monospace,"Cascadia Mono",Consolas,"SF Mono",monospace;
+  --sans:"Segoe UI Variable Text","Segoe UI Variable",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --disp:"Segoe UI Variable Display","Segoe UI Variable",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141310;--surface:#1c1b17;--sunk:#24231e;--ink:#efece3;--ink2:#c8c4b8;--mut:#8f8a7d;--line:#2b2924;--line2:#3a372f;
+  --acc:#8aa0ff;--acc-ink:#0b1030;--acc-soft:#1d2342;
+  --pass:#62d28d;--fail:#ff8d80;--err:#f0be6a;
+  --pass-bg:#14281b;--fail-bg:#33191a;--err-bg:#33290f;
+  --shadow:0 18px 50px rgba(0,0,0,.55)}}
+*{box-sizing:border-box}
+html{color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh}
+button,input,select,textarea{font:inherit;color:inherit}
+.hide{display:none!important}
+.sp{flex:1}
+.mut{color:var(--mut)}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- header + stepper ---------- */
+.top{position:sticky;top:0;z-index:10;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;height:60px;padding:0 24px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{font:650 15px var(--disp);letter-spacing:-.02em;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.brand b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--bg);font:700 12px var(--mono)}
+.steps{display:flex;align-items:center;gap:6px}
+.stp{display:flex;align-items:center;gap:9px;background:none;border:0;padding:6px 10px;border-radius:8px;cursor:pointer;color:var(--mut);font-weight:500}
+.stp:hover{color:var(--ink);background:var(--sunk)}
+.stp .n{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--line2);font:600 12px var(--mono);flex:none;background:transparent}
+.stp.on{color:var(--ink);font-weight:650}
+.stp.on .n{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.stp.done .n{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.stp+.stp::before{content:"";width:22px;height:1.5px;background:var(--line2);margin-right:6px;margin-left:-4px}
+.state{justify-self:end;display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink2);white-space:nowrap}
+.state i{width:8px;height:8px;border-radius:50%;background:var(--line2)}
+.state.run{color:var(--acc);font-weight:600}
+.state.run i{background:var(--acc);animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.2}}
+.hbar{position:sticky;top:60px;z-index:9;height:3px}
+.hbar i{display:block;height:100%;width:0;background:var(--acc);transition:width .35s ease}
+
+/* ---------- pages ---------- */
+.page{max-width:760px;margin:0 auto;padding:56px 24px 120px}
+.page.wide{max-width:1480px;padding-top:40px}
+.eyebrow{font:600 12px var(--mono);color:var(--acc);letter-spacing:.02em;margin-bottom:12px}
+h1{font:650 36px/1.1 var(--disp);letter-spacing:-.035em;margin:0 0 12px}
+.lede{font-size:16px;color:var(--ink2);margin:0 0 36px;max-width:56ch}
+h2{font:650 15px var(--disp);letter-spacing:-.01em;margin:0 0 4px}
+.block{margin-bottom:32px}
+.block>.sub{color:var(--mut);margin:0 0 14px;font-size:13px}
+.stack{display:grid;gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+label.l{display:block;font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:6px}
+input[type=text],input[type=password],input[type=number],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--surface);min-height:40px}
+textarea{font-family:var(--mono);font-size:12.5px;min-height:64px;resize:vertical}
+input::placeholder{color:var(--mut);opacity:.75}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+input[type=checkbox]{accent-color:var(--acc);width:16px;height:16px;margin:0}
+.chk{display:flex;align-items:flex-start;gap:10px;color:var(--ink2);cursor:pointer}
+.chk input{margin-top:3px;flex:none}
+.hint{font-size:13px;color:var(--mut)}
+.res{font-size:13px;color:var(--mut);min-height:1.5em}
+.res.ok{color:var(--pass)}.res.bad{color:var(--fail)}
+details.more{border-top:1px solid var(--line);padding-top:4px}
+details.more>summary{cursor:pointer;list-style:none;padding:12px 0;font-weight:600;display:flex;align-items:center;gap:10px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"";width:7px;height:7px;border-right:1.5px solid var(--mut);border-bottom:1.5px solid var(--mut);transform:rotate(-45deg);transition:transform .15s}
+details.more[open]>summary::before{transform:rotate(45deg)}
+details.more>summary small{font-weight:400;color:var(--mut)}
+details.more>.in{padding:6px 0 20px;display:grid;gap:16px}
+
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 16px;height:40px;border-radius:8px;border:1px solid var(--line2);background:var(--surface);cursor:pointer;white-space:nowrap;font-weight:550}
+.btn:hover:not(:disabled){border-color:var(--ink2)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:var(--acc-ink);font-weight:650}
+.btn.pri:hover:not(:disabled){filter:brightness(1.1)}
+.btn.big{height:52px;padding:0 28px;font-size:16px;border-radius:10px}
+.btn.dng{color:var(--fail);border-color:color-mix(in srgb,var(--fail) 50%,var(--line2))}
+.btn.sm{height:32px;padding:0 12px;font-size:13px}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink2)}
+.btn.ghost:hover:not(:disabled){background:var(--sunk);border-color:transparent}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+a.dl{color:var(--acc);font-weight:600;text-decoration:none}
+a.dl:hover{text-decoration:underline}
+.foot{display:flex;align-items:center;gap:10px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* test file */
+.drop{display:block;border:1.5px dashed var(--line2);border-radius:12px;padding:22px;text-align:center;color:var(--ink2);cursor:pointer;background:var(--surface)}
+.drop:hover,.drop.over{border-color:var(--acc);background:var(--acc-soft)}
+.drop input{display:none}
+.drop b{color:var(--acc)}
+.kinds{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:0 0 14px}
+.kinds b{font-weight:650;font-variant-numeric:tabular-nums}
+
+/* tables */
+.tw{overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tw.pick{max-height:min(46vh,460px)}
+.tw.res{max-height:calc(100vh - 300px);min-height:240px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{position:sticky;top:0;z-index:2;background:var(--surface);font-size:12px;font-weight:600;color:var(--mut);white-space:nowrap;box-shadow:0 1px 0 var(--line)}
+th.ck,td.ck{width:42px;padding-right:0}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--sunk)}
+tbody tr.on td{background:var(--acc-soft)}
+tbody tr:last-child td{border-bottom:0}
+td.id{font-family:var(--mono);font-size:12px;white-space:nowrap;color:var(--ink2)}
+td.q{min-width:260px;max-width:400px}
+.clamp2,.clamp3{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+.clamp2{-webkit-line-clamp:2}.clamp3{-webkit-line-clamp:3}
+td.d{max-width:240px;word-break:break-word;font-size:12.5px}
+td.rs{min-width:200px;max-width:340px;color:var(--mut);font-size:12.5px}
+td.tm{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+th.tm{text-align:right}
+td.kd{font-size:12px;color:var(--mut);white-space:nowrap}
+.slow{color:var(--err);font-weight:650}
+.st{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:650;white-space:nowrap}
+.st i{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.st.PASS{color:var(--pass)}.st.FAIL{color:var(--fail)}.st.ERROR{color:var(--err)}
+.st.MANUAL,.st.SKIP,.st.NOTRUN{color:var(--mut);font-weight:500}
+.st.NOTRUN i{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor}
+.st.pv{font-size:12px;font-weight:500;opacity:.85}
+.chg{font-size:12px;display:block;margin-top:2px;font-weight:650}.chg.bad{color:var(--fail)}.chg.good{color:var(--pass)}
+td.none{text-align:center;color:var(--mut);padding:48px}
+.bar-t{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.bar-t input[type=text]{width:260px}
+.bar-t select{width:auto}
+
+/* run page */
+.runcard{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:26px}
+.runcard .sumline{font:650 22px var(--disp);letter-spacing:-.02em;margin-bottom:4px}
+.runcard .meta{color:var(--mut);margin-bottom:22px}
+.meter{height:12px;border-radius:99px;background:var(--sunk);overflow:hidden;margin:20px 0 8px}
+.meter i{display:block;height:100%;width:0;background:var(--acc);border-radius:99px;transition:width .35s ease}
+.count{display:flex;align-items:baseline;gap:10px}
+.count b{font:650 44px/1 var(--disp);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+details.log summary{cursor:pointer;color:var(--mut);width:max-content;margin-top:18px}
+#log{font:12px/1.55 var(--mono);white-space:pre-wrap;color:var(--ink2);max-height:240px;overflow:auto;margin-top:10px;padding:12px 14px;background:var(--sunk);border-radius:8px}
+
+/* review summary */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:10px 40px;align-items:center;margin-bottom:24px}
+.hero .big{font:650 72px/1 var(--disp);letter-spacing:-.045em}
+.hero .big small{font-size:30px;color:var(--mut);margin-left:3px;letter-spacing:0}
+.hero .cap{color:var(--mut);margin-top:6px}
+.dist{display:flex;height:12px;border-radius:99px;overflow:hidden;gap:2px;background:var(--sunk)}
+.dist i{display:block;min-width:3px}
+.dist .PASS{background:var(--pass)}.dist .FAIL{background:var(--fail)}.dist .ERROR{background:var(--err)}.dist .MANUAL{background:var(--line2)}
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin-top:12px;color:var(--ink2)}
+.legend b{font-weight:650;font-variant-numeric:tabular-nums}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:7px;background:var(--line2)}
+.legend .PASS::before{background:var(--pass)}.legend .FAIL::before{background:var(--fail)}.legend .ERROR::before{background:var(--err)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:32px}
+.metrics>div{padding:14px 16px;background:var(--surface)}
+.metrics b{display:block;font:650 20px/1.25 var(--disp);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.metrics span{font-size:12.5px;color:var(--mut)}
+.metrics .wide{grid-column:span 2}
+.metrics .warn b{color:var(--err)}
+.empty{padding:36px;text-align:center;color:var(--mut);border:1.5px dashed var(--line2);border-radius:12px;margin-bottom:32px}
+.chips{display:flex;gap:4px;flex-wrap:wrap}
+.chip{border:1px solid var(--line2);background:transparent;height:32px;padding:0 12px;border-radius:99px;cursor:pointer;color:var(--ink2);display:inline-flex;align-items:center;gap:7px}
+.chip em{font-style:normal;color:var(--mut);font-variant-numeric:tabular-nums;font-size:12px}
+.chip:hover{border-color:var(--ink2)}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.chip[aria-pressed=true] em{color:inherit;opacity:.7}
+
+/* detail drawer */
+.scrim{position:fixed;inset:0;background:rgba(15,12,5,.35);z-index:19;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+#drawer{position:fixed;top:0;right:0;bottom:0;width:min(780px,100%);background:var(--bg);border-left:1px solid var(--line);box-shadow:var(--shadow);z-index:20;display:flex;flex-direction:column;transform:translateX(104%);transition:transform .24s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+#drawer.open{transform:none;visibility:visible}
+.dh{display:flex;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--line);background:var(--surface)}
+.dh .ttl{font:650 13px var(--mono)}
+.dh .tag{color:var(--mut);font-size:13px}
+#dbody{overflow:auto;padding:6px 24px 48px}
+.qbox{padding:22px 0 18px;font:600 19px/1.4 var(--disp);letter-spacing:-.015em;white-space:pre-wrap;word-break:break-word}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:8px 16px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 4px}
+.kv dt{color:var(--mut)}.kv dd{margin:0;word-break:break-word}
+.ds{border-bottom:1px solid var(--line)}
+.ds>summary{list-style:none;cursor:pointer;padding:14px 0;font-weight:650;display:flex;align-items:center;gap:10px}
+.ds>summary::-webkit-details-marker{display:none}
+.ds>summary::before{content:"";width:7px;height:7px;border-right:1.5px solid var(--mut);border-bottom:1.5px solid var(--mut);transform:rotate(-45deg);transition:transform .15s}
+.ds[open]>summary::before{transform:rotate(45deg)}
+.ds>.in{padding:0 0 18px}
+.ds .sub{font-weight:400;color:var(--mut);font-size:12.5px}
+#drawer pre{white-space:pre-wrap;word-break:break-word;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:0 0 8px;font:12px/1.6 var(--mono);max-height:360px;overflow:auto}
+#drawer table{font-size:12px}
+#drawer th,#drawer td{padding:6px 10px}
+#drawer .tablewrap{overflow:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+
+#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:10px;font-weight:500;opacity:0;pointer-events:none;transition:.2s;z-index:40;max-width:90vw}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .top{grid-template-columns:auto 1fr;padding:0 14px}
+  .steps{justify-self:end}.stp .tx{display:none}.stp.on .tx{display:inline}.stp+.stp::before{width:8px}
+  .state{display:none}
+  .page{padding:32px 16px 100px}
+  h1{font-size:28px}
+  .two,.three{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}.hero .big{font-size:56px}
+  .kv{grid-template-columns:1fr}
+  .bar-t input[type=text]{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="brand"><b>PT</b>Procurement Test Runner</span>
+  <nav class="steps" aria-label="Steps">
+    <button class="stp" data-n="1"><span class="n">1</span><span class="tx">Connect</span></button>
+    <button class="stp" data-n="2"><span class="n">2</span><span class="tx">Tests</span></button>
+    <button class="stp" data-n="3"><span class="n">3</span><span class="tx">Run</span></button>
+    <button class="stp" data-n="4"><span class="n">4</span><span class="tx">Review</span></button>
+  </nav>
+  <span class="state" id="runpill"><i></i><span id="runtxt">Idle</span></span>
+</header>
+<div class="hbar"><i id="hfill"></i></div>
+
+<!-- ================= 1 · CONNECT ================= -->
+<section class="page" id="s1">
+  <div class="eyebrow">Step 1 of 4</div>
+  <h1>Connect to the Procurement agent</h1>
+  <p class="lede">Point the runner at the Procurement agent app. Keys stay on this PC. You can save them encrypted so you only enter them once.</p>
+
+  <div class="block stack">
+    <div>
+      <h2>Agent app</h2>
+      <p class="sub">The Dify app that answers the procurement questions.</p>
+    </div>
+    <div id="g_base"><label class="l" for="base_url">Base URL <span class="mut">(include /v1)</span></label><input type="text" id="base_url" placeholder="https://your-dify-host/v1" spellcheck="false"></div>
+    <div><label class="l" for="api_key">API key</label><input type="password" id="api_key" placeholder="app-xxxxxxxx" autocomplete="off"></div>
+    <div><label class="l" for="mode">How to call it</label>
+      <select id="mode">
+        <option value="chat_stream">Dify Agent / Chat, streaming (Agent apps)</option>
+        <option value="chat_block">Dify Chat, blocking</option>
+        <option value="workflow">Dify Workflow, tool only (/workflows/run)</option>
+        <option value="custom">Custom HTTP endpoint (portal)</option>
+      </select></div>
+
+    <div class="only-workflow hide stack">
+      <div class="two">
+        <div><label class="l" for="wf_question_var">Input name: question</label><input type="text" id="wf_question_var" value="question"></div>
+        <div><label class="l" for="wf_query_var">Input name: query</label><input type="text" id="wf_query_var" value="query"></div>
+        <div><label class="l" for="wf_query_tpl">Query template</label><input type="text" id="wf_query_tpl" value="{question}"></div>
+        <div><label class="l" for="wf_result_field">Output field</label><input type="text" id="wf_result_field" value="result"></div>
+      </div>
+      <p class="hint" style="margin:0">Tool-only mode tests retrieval. The real agent writes the query; here it is built from the template (default: the question).</p>
+    </div>
+
+    <div class="only-custom hide stack">
+      <div><label class="l" for="custom_url">Full endpoint URL</label><input type="text" id="custom_url" placeholder="https://portal.example/api/chat" spellcheck="false"></div>
+      <div><label class="l" for="custom_path">Answer JSON path (dot)</label><input type="text" id="custom_path" value="answer"></div>
+      <div><label class="l" for="custom_headers">Extra headers (JSON)</label><textarea id="custom_headers">{}</textarea></div>
+      <div><label class="l" for="custom_body">Body template ({{question}}, {{user}})</label><textarea id="custom_body">{"query": "{{question}}", "user": "{{user}}"}</textarea></div>
+    </div>
+  </div>
+
+  <details class="more" id="wfsec">
+    <summary>Workflow tool <small>optional, for the workflow log</small></summary>
+    <div class="in">
+      <p class="hint" style="margin:0">A second key, for the workflow app. It shows the workflow log next to the agent log and powers the tool-only mode.</p>
+      <div><label class="l" for="wf_base_url">Base URL (include /v1)</label><input type="text" id="wf_base_url" placeholder="usually the same host as the agent" spellcheck="false"></div>
+      <div><label class="l" for="wf_api_key">API key</label><input type="password" id="wf_api_key" placeholder="app-xxxxxxxx" autocomplete="off"></div>
+      <label class="chk"><input type="checkbox" id="also_tool"><span>Also trace the tool. After each agent test, replay the agent's question and query on the workflow and keep its node-by-node log. Adds the tool's time to each test.</span></label>
+    </div>
+  </details>
+
+  <details class="more">
+    <summary>Advanced <small>certificates, user id, extra inputs</small></summary>
+    <div class="in">
+      <div><label class="l" for="ssl_mode">TLS certificates</label>
+        <select id="ssl_mode">
+          <option value="corp">Windows trusted certificates (recommended)</option>
+          <option value="ca_file">Custom CA file (.pem)</option>
+          <option value="insecure">Do not verify (insecure, last resort)</option>
+        </select></div>
+      <div class="only-cafile hide"><label class="l" for="ca_file">CA file path (.pem / .crt, Base-64)</label><input type="text" id="ca_file" placeholder="C:\certs\telkomsel-root.pem" spellcheck="false"></div>
+      <div><label class="l" for="user">User id</label><input type="text" id="user" value="tester-001"></div>
+      <div><label class="l" for="inputs">Extra inputs (JSON)</label><input type="text" id="inputs" value="{}" spellcheck="false"></div>
+      <label class="chk"><input type="checkbox" id="remember"><span>Remember these settings in this browser, including the API key</span></label>
+    </div>
+  </details>
+
+  <div class="actions" style="margin-top:8px">
+    <button class="btn" id="btnPing">Test agent</button>
+    <button class="btn" id="btnPingWf">Test workflow</button>
+    <button class="btn" id="btnSaveProf" title="Stores both URLs and keys on this PC. Keys are encrypted with Windows DPAPI: only your Windows user on this PC can read them.">Save on this PC</button>
+  </div>
+  <div class="res" id="pingres" role="status" style="margin-top:12px"></div>
+  <div class="res" id="profnote"></div>
+
+  <div class="foot"><span class="sp"></span><button class="btn pri" data-go="2">Continue to tests</button></div>
+</section>
+
+<!-- ================= 2 · TESTS ================= -->
+<section class="page hide" id="s2">
+  <div class="eyebrow">Step 2 of 4</div>
+  <h1>Choose your tests</h1>
+  <p class="lede">Load the workbook, then tick the tests to run. Manual and skipped rows are never run automatically.</p>
+
+  <div class="block stack">
+    <div><label class="l" for="path">Workbook path</label>
+      <div class="actions" style="flex-wrap:nowrap"><input type="text" id="path" spellcheck="false"><button class="btn" id="btnLoad">Load</button></div></div>
+    <label class="drop" id="drop"><input type="file" id="upl" accept=".xlsx"><b>Upload a .xlsx</b> or drop it here</label>
+    <div class="actions"><a class="dl" href="/download?f=Test_Template.xlsx">Download blank template</a><span class="res" id="loadres" role="status"></span></div>
+  </div>
+
+  <div class="block" id="pickBlock">
+    <div class="kinds" id="kinds"></div>
+    <div class="bar-t">
+      <input type="text" id="psearch" placeholder="Search id, question, document" aria-label="Search tests">
+      <select id="pkind" aria-label="Filter by kind"><option value="">All kinds</option><option>document</option><option>fallback</option><option>security</option><option>manual</option><option>skip</option></select>
+      <span class="sp"></span>
+      <button class="btn sm" id="pAll">Select all checkable</button>
+      <button class="btn sm" id="pFailed">Only failed</button>
+      <button class="btn sm ghost" id="pNone">Clear</button>
+    </div>
+    <div class="tw pick"><table>
+      <thead><tr><th class="ck"><input type="checkbox" id="selall" aria-label="Select all shown"></th><th>ID</th><th>Question</th><th>Expected document</th><th>Kind</th></tr></thead>
+      <tbody id="ptb"></tbody>
+    </table></div>
+    <div class="hint num" id="pcnt" style="margin-top:10px"></div>
+  </div>
+
+  <div class="foot"><button class="btn" data-go="1">Back</button><span class="sp"></span><button class="btn pri" data-go="3">Continue to run</button></div>
+</section>
+
+<!-- ================= 3 · RUN ================= -->
+<section class="page hide" id="s3">
+  <div class="eyebrow">Step 3 of 4</div>
+  <h1>Run</h1>
+  <p class="lede">Each test starts a fresh conversation. You can leave this page; the run keeps going and the results land in Review.</p>
+
+  <div class="runcard">
+    <div id="idleView">
+      <div class="sumline" id="runSummary">–</div>
+      <div class="meta" id="runMeta"></div>
+      <div class="actions">
+        <button class="btn pri big" id="btnRunSel">Run selected</button>
+        <button class="btn" id="btnRunAll">Run all auto-checkable</button>
+        <button class="btn" id="btnRunFail">Re-run failed / error</button>
+      </div>
+    </div>
+    <div id="liveView" class="hide">
+      <div class="count"><b id="liveCount">0</b><span class="mut" id="liveOf">of 0 done</span></div>
+      <div class="meter"><i id="barfill"></i></div>
+      <div class="actions"><span class="mut num" id="progtxt"></span><span class="sp"></span><button class="btn dng" id="btnStop" disabled>Stop</button></div>
+    </div>
+    <details class="log"><summary>Live log</summary><div id="log"></div></details>
+  </div>
+
+  <details class="more" style="margin-top:32px">
+    <summary>Run options <small>workers, timeouts, time limit</small></summary>
+    <div class="in">
+      <div class="three">
+        <div><label class="l" for="workers">Parallel workers</label><input type="number" id="workers" value="3" min="1" max="20"></div>
+        <div><label class="l" for="timeout">Timeout per test (s)</label><input type="number" id="timeout" value="120" min="5"></div>
+        <div><label class="l" for="retries">Retries on network error</label><input type="number" id="retries" value="1" min="0" max="5"></div>
+        <div><label class="l" for="time_limit">Flag SLOW above (s)</label><input type="number" id="time_limit" value="50" min="0"></div>
+        <div><label class="l" for="min_content">Min content score %</label><input type="number" id="min_content" value="0" min="0" max="100"></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="fail_slow"><span>Fail tests slower than the limit</span></label>
+      <label class="chk"><input type="checkbox" id="clean" checked><span>Clean test steps (“Halo min”, “Chatbot Answer”, quotes)</span></label>
+      <label class="chk"><input type="checkbox" id="auto_export" checked><span>Write the Excel automatically when a run finishes (results/ folder)</span></label>
+      <p class="hint" style="margin:0">With more than 1 worker, timings include queueing on the server. Use 1 worker for a clean latency measurement.</p>
+    </div>
+  </details>
+
+  <div class="foot"><button class="btn" data-go="2">Back</button><span class="sp"></span><button class="btn" data-go="4">Go to results</button></div>
+</section>
+
+<!-- ================= 4 · REVIEW ================= -->
+<section class="page wide hide" id="s4">
+  <div class="eyebrow">Step 4 of 4 · <span id="filelbl">no file loaded</span></div>
+  <h1>Review</h1>
+  <div id="cards"></div>
+
+  <div class="bar-t">
+    <div class="chips" id="chips" role="group" aria-label="Filter by status">
+      <button class="chip" data-v="" aria-pressed="true">All <em></em></button>
+      <button class="chip" data-v="PASS" aria-pressed="false">Pass <em></em></button>
+      <button class="chip" data-v="FAIL" aria-pressed="false">Fail <em></em></button>
+      <button class="chip" data-v="ERROR" aria-pressed="false">Error <em></em></button>
+      <button class="chip" data-v="MANUAL" aria-pressed="false">Manual <em></em></button>
+      <button class="chip" data-v="NOTRUN" aria-pressed="false">Not run <em></em></button>
+    </div>
+    <input type="hidden" id="fstatus" value="">
+    <select id="fkind" aria-label="Filter by kind"><option value="">All kinds</option><option>document</option><option>fallback</option><option>security</option><option>manual</option><option>skip</option></select>
+    <input type="text" id="fsearch" placeholder="Search   ( / )" aria-label="Search results">
+    <span class="mut num" id="cnt"></span>
+    <span class="sp"></span>
+    <select id="baseline" aria-label="Compare with a previous run"><option value="">Compare with: none</option></select>
+  </div>
+  <div class="tw res"><table>
+    <thead><tr><th>ID</th><th>Question</th><th>Expected document</th><th>Cited</th><th class="tm">Time</th><th>Status</th><th>Previous</th><th>Reason</th></tr></thead>
+    <tbody id="tb"></tbody>
+  </table></div>
+
+  <div class="foot">
+    <button class="btn" id="btnRunFail2">Re-run failed / error</button>
+    <button class="btn" data-go="3">Back to run</button>
+    <span class="sp"></span>
+    <span class="res" id="exres"></span>
+    <button class="btn pri" id="exX">Export Excel</button>
+    <button class="btn" id="exN" title="Separate Excel file: every workflow node of every test with its input and output">Workflow steps (Excel)</button>
+    <button class="btn ghost" id="exC">CSV</button>
+    <button class="btn ghost" id="exJ">JSON</button>
+  </div>
+</section>
+
+<div class="scrim" id="scrim"></div>
+<aside id="drawer" aria-label="Test detail" aria-hidden="true">
+  <div class="dh"><span class="ttl" id="dtitle"></span><span class="tag" id="dtag"></span><span class="sp"></span><button class="btn sm ghost" id="dclose">Close · Esc</button></div>
+  <div id="dbody"></div>
+</aside>
+<div id="toast" role="status"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const F=['mode','ssl_mode','ca_file','base_url','api_key','wf_base_url','wf_api_key','user','inputs','wf_question_var','wf_query_var','wf_query_tpl','wf_result_field','custom_url','custom_path','custom_headers','custom_body','workers','timeout','retries','time_limit','min_content','path'];
+const C=['fail_slow','auto_export','also_tool','clean','remember'];
+let tests=[],results={},prev={},sel=new Set(),polling=null,lastRunning=false,running=false,cur=1,profiles={};
+
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const api=async(url,body)=>{const r=await fetch(url,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const j=await r.json().catch(()=>({error:'bad response'}));if(!r.ok)throw new Error(j.error||('HTTP '+r.status));return j;};
+const settings=()=>{const s={};F.forEach(k=>s[k]=$(k).value);C.forEach(k=>s[k]=$(k).checked);s.target='sub';s.send_channel=false;s.channel_var='channel_id';return s;};
+const LABEL={PASS:'Pass',FAIL:'Fail',ERROR:'Error',MANUAL:'Manual',SKIP:'Skip',NOTRUN:'Not run'};
+const stat=(s,cls='')=>`<span class="st ${s} ${cls}"><i></i>${LABEL[s]||esc(s)}</span>`;
+let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),3800);}
+function setRes(el,text,kind){el.textContent=text;el.className='res'+(kind?' '+kind:'');}
+const hasResults=()=>Object.keys(results).length>0;
+
+/* ---- wizard navigation ---- */
+function done(n){
+  if(n===1)return !!$('base_url').value&&(!!$('api_key').value||!!(profiles.agent&&profiles.agent.has_key));
+  if(n===2)return tests.length>0&&sel.size>0;
+  if(n===3)return hasResults();return false;}
+function paintSteps(){document.querySelectorAll('.stp').forEach(b=>{const n=+b.dataset.n;const on=n===cur,d=!on&&done(n);
+  b.classList.toggle('on',on);b.classList.toggle('done',d);b.querySelector('.n').textContent=d?'✓':n;
+  if(on)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});}
+function go(n){cur=n;for(let i=1;i<=4;i++)$('s'+i).classList.toggle('hide',i!==n);paintSteps();window.scrollTo(0,0);
+  try{sessionStorage.setItem('pht_step',n);}catch(e){}
+  if(n===3)runSummary();}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g)go(+g.dataset.go);const s=e.target.closest('.stp');if(s)go(+s.dataset.n);});
+
+/* ---- persistence ---- */
+function saveSettings(){try{const s=settings();if(!s.remember){localStorage.removeItem('pht');return;}localStorage.setItem('pht',JSON.stringify(s));}catch(e){}}
+function loadSettings(){try{const s=JSON.parse(localStorage.getItem('pht')||'null');if(!s)return;
+  F.forEach(k=>{if(s[k]!==undefined)$(k).value=s[k];});C.forEach(k=>{if(s[k]!==undefined)$(k).checked=s[k];});}catch(e){}}
+function modeUI(){const m=$('mode').value;
+  document.querySelectorAll('.only-workflow').forEach(e=>e.classList.toggle('hide',m!=='workflow'));
+  document.querySelectorAll('.only-custom').forEach(e=>e.classList.toggle('hide',m!=='custom'));
+  document.querySelectorAll('.only-cafile').forEach(e=>e.classList.toggle('hide',$('ssl_mode').value!=='ca_file'));paintSteps();}
+[...F,...C].forEach(k=>$(k).addEventListener('change',()=>{saveSettings();modeUI();}));
+$('api_key').addEventListener('input',paintSteps);$('base_url').addEventListener('input',paintSteps);
+/* ---- saved connections (keys live encrypted on this PC, never in the page) ---- */
+async function loadProfiles(){try{profiles=(await api('/api/profiles')).profiles||{};}catch(e){profiles={};}
+  const a=profiles.agent||{},w=profiles.workflow||{};
+  if(!$('base_url').value&&a.base_url)$('base_url').value=a.base_url;
+  if(!$('wf_base_url').value&&w.base_url)$('wf_base_url').value=w.base_url;
+  $('api_key').placeholder=a.has_key?'Saved. Leave empty to use it':'app-xxxxxxxx';
+  $('wf_api_key').placeholder=w.has_key?'Saved. Leave empty to use it':'app-xxxxxxxx';
+  if(w.has_key||w.base_url)$('wfsec').open=true;
+  setRes($('profnote'),`Agent key ${a.has_key?'saved':'not saved'} · workflow key ${w.has_key?'saved':'not saved'}`);paintSteps();}
+$('btnSaveProf').onclick=async()=>{try{
+  await api('/api/profile/save',{name:'agent',base_url:$('base_url').value,api_key:$('api_key').value});
+  await api('/api/profile/save',{name:'workflow',base_url:$('wf_base_url').value||$('base_url').value,api_key:$('wf_api_key').value});
+  $('api_key').value='';$('wf_api_key').value='';saveSettings();await loadProfiles();
+  setRes($('profnote'),$('profnote').textContent+' · saved and encrypted','ok');toast('Connections saved on this PC');}
+  catch(e){setRes($('profnote'),'Save failed: '+e.message,'bad');}};
+const ping=which=>async()=>{setRes($('pingres'),'Checking…');try{const j=await api('/api/ping',{settings:settings(),which});
+  setRes($('pingres'),`${which}: ${j.ok?'OK':'failed'} · ${j.info} · ${j.ms} ms`,j.ok?'ok':'bad');}catch(e){setRes($('pingres'),`${which}: failed · ${e.message}`,'bad');}};
+$('btnPing').onclick=ping('agent');$('btnPingWf').onclick=ping('workflow');
+
+/* ---- loading tests ---- */
+async function loadTests(){const j=await api('/api/tests');tests=j.tests;if(!$('path').value)$('path').value=j.default_path||'';
+  $('filelbl').textContent=j.file?j.file.split(/[\\/]/).pop():'no file loaded';$('filelbl').title=j.file||'';
+  if(!sel.size)tests.forEach(t=>{if(t.kind!=='skip'&&t.kind!=='manual')sel.add(t.id);});render();}
+$('btnLoad').onclick=async()=>{try{setRes($('loadres'),'Loading…');
+  const j=await api('/api/load',{path:$('path').value,clean:$('clean').checked});sel.clear();results={};
+  await loadTests();setRes($('loadres'),`Loaded ${j.count} rows`,'ok');}catch(e){setRes($('loadres'),'Error: '+e.message,'bad');}};
+async function uploadFile(f){if(!f)return;const b=await f.arrayBuffer();let bin='';const u=new Uint8Array(b);
+  for(let i=0;i<u.length;i+=0x8000)bin+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));
+  try{const j=await api('/api/upload',{name:f.name,b64:btoa(bin),clean:$('clean').checked});sel.clear();results={};
+  await loadTests();setRes($('loadres'),`Uploaded ${f.name}: ${j.count} rows`,'ok');}catch(err){setRes($('loadres'),'Error: '+err.message,'bad');}}
+$('upl').onchange=e=>uploadFile(e.target.files[0]);
+['dragenter','dragover'].forEach(ev=>$('drop').addEventListener(ev,e=>{e.preventDefault();$('drop').classList.add('over');}));
+['dragleave','drop'].forEach(ev=>$('drop').addEventListener(ev,e=>{e.preventDefault();$('drop').classList.remove('over');}));
+$('drop').addEventListener('drop',e=>uploadFile(e.dataTransfer.files[0]));
+
+/* ---- test picker (step 2) ---- */
+function status(t){const r=results[t.id];return r?r.status:(t.kind==='manual'?'MANUAL':'NOTRUN');}
+const checkable=t=>t.kind!=='skip'&&t.kind!=='manual';
+function renderPick(){const k=$('pkind').value,q=$('psearch').value.toLowerCase();const rows=[];let n=0;
+  for(const t of tests){if(k&&t.kind!==k)continue;if(q&&!(t.id+' '+t.question+' '+t.expected_doc).toLowerCase().includes(q))continue;n++;
+    rows.push(`<tr class="${sel.has(t.id)?'on':''}" data-id="${esc(t.id)}"><td class="ck"><input type="checkbox" class="sc" aria-label="Select ${esc(t.id)}" ${sel.has(t.id)?'checked':''} ${t.kind==='skip'?'disabled':''}></td>
+    <td class="id">${esc(t.id)}</td><td class="q" title="${esc(t.question)}"><span class="clamp2">${esc(t.question)}</span></td>
+    <td class="d">${esc(t.expected_doc)||'<span class="mut">–</span>'}</td><td class="kd">${esc(t.kind)}</td></tr>`);}
+  $('ptb').innerHTML=rows.join('')||`<tr><td class="none" colspan="5">${tests.length?'No tests match.':'No test file loaded yet.'}</td></tr>`;
+  const kc={};tests.forEach(t=>kc[t.kind]=(kc[t.kind]||0)+1);
+  $('kinds').innerHTML=tests.length?Object.entries(kc).map(([k,v])=>`<span><b>${v}</b> ${esc(k)}</span>`).join(''):'';
+  $('pcnt').textContent=tests.length?`${sel.size} of ${tests.length} selected · ${n} shown`:'';$('pickBlock').classList.toggle('hide',!tests.length);}
+function pickChange(){$('pcnt').textContent=`${sel.size} of ${tests.length} selected`;paintSteps();}
+$('ptb').addEventListener('click',e=>{const tr=e.target.closest('tr[data-id]');if(!tr)return;const id=tr.dataset.id;
+  const cb=tr.querySelector('.sc');if(!cb||cb.disabled)return;if(e.target!==cb)cb.checked=!cb.checked;
+  cb.checked?sel.add(id):sel.delete(id);tr.classList.toggle('on',cb.checked);pickChange();});
+$('selall').onchange=e=>{document.querySelectorAll('#ptb tr[data-id]').forEach(tr=>{const t=tests.find(x=>x.id===tr.dataset.id);
+  if(t&&t.kind!=='skip')e.target.checked?sel.add(t.id):sel.delete(t.id);});renderPick();paintSteps();};
+$('pAll').onclick=()=>{tests.filter(checkable).forEach(t=>sel.add(t.id));renderPick();paintSteps();};
+$('pNone').onclick=()=>{sel.clear();renderPick();paintSteps();};
+$('pFailed').onclick=()=>{sel.clear();tests.forEach(t=>{if(['FAIL','ERROR'].includes((results[t.id]||{}).status))sel.add(t.id);});
+  if(!sel.size)toast('No failed or errored tests yet.');renderPick();paintSteps();};
+$('pkind').onchange=renderPick;$('psearch').oninput=renderPick;
+
+/* ---- results table (step 4) ---- */
+function render(){renderPick();renderResults();runSummary();paintSteps();}
+function renderResults(){const fs=$('fstatus').value,fk=$('fkind').value,q=$('fsearch').value.toLowerCase();let n=0;const rows=[];const counts={'':tests.length};
+  for(const t of tests){const s=status(t);counts[s]=(counts[s]||0)+1;}
+  document.querySelectorAll('#chips .chip').forEach(c=>{c.querySelector('em').textContent=counts[c.dataset.v]||0;c.setAttribute('aria-pressed',c.dataset.v===fs);});
+  for(const t of tests){const st=status(t);const r=results[t.id]||{};
+    if(fs&&st!==fs)continue;if(fk&&t.kind!==fk)continue;
+    if(q&&!(t.id+' '+t.question+' '+t.expected_doc).toLowerCase().includes(q))continue;n++;
+    const p=prev[t.id];let chg='';if(p&&r.status&&p.status!==r.status){chg=`<span class="chg ${r.status==='PASS'?'good':'bad'}">${esc(LABEL[p.status]||p.status)} → ${esc(LABEL[r.status]||r.status)}</span>`;}
+    const why=[r.reason,r.diag,r.replay_diag].filter(Boolean).join(' · ');
+    rows.push(`<tr data-id="${esc(t.id)}"><td class="id">${esc(t.id)}</td>
+    <td class="q" title="${esc(t.question)}"><span class="clamp2">${esc(t.question)}</span></td>
+    <td class="d">${esc(t.expected_doc)||'<span class="mut">–</span>'}</td>
+    <td class="d">${r.cited_doc?esc((r.level?r.level+' · ':'')+r.cited_doc):''}</td>
+    <td class="tm ${r.slow?'slow':''}">${r.time!=null&&r.status?Number(r.time).toFixed(1)+'s':''}</td>
+    <td>${stat(st)}</td><td>${p?stat(p.status,'pv'):''}${chg}</td>
+    <td class="rs" title="${esc(why)}"><span class="clamp3">${esc(why)}</span></td></tr>`);}
+  $('tb').innerHTML=rows.join('')||`<tr><td class="none" colspan="8">${tests.length?'No tests match these filters.':'No test file loaded yet.'}</td></tr>`;
+  $('cnt').textContent=`${n} of ${tests.length}`;}
+$('tb').addEventListener('click',e=>{const tr=e.target.closest('tr[data-id]');if(tr)openDrawer(tr.dataset.id);});
+$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$('fstatus').value=c.dataset.v;renderResults();});
+$('fkind').onchange=renderResults;$('fsearch').oninput=renderResults;
+document.addEventListener('keydown',e=>{if(e.key==='/'&&cur===4&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();$('fsearch').focus();}});
+
+/* ---- detail drawer ---- */
+function agentLog(r){const l=(r.agent_log||[]).map(e=>`${String(e.t).padStart(6)}s  ${e.event}${e.detail?'  '+e.detail:''}`).join('\n');
+  const u=r.usage&&r.usage.prompt_tokens?`\nagent read ${r.usage.prompt_tokens} tokens, wrote ${r.usage.completion_tokens||'?'}`:'';
+  const s=r.t_llm1!=null||r.t_tool!=null?`\nsplit: agent call 1 ${r.t_llm1??'-'}s · tool ${r.t_tool??'-'}s · agent call 2 ${r.t_llm2??'-'}s · answer ${r.t_answer??'-'}s`:'';
+  return (l||'-')+u+s;}
+function nodesTable(ns){if(!ns||!ns.length)return '<pre>No node events received.</pre>';
+  return '<div class="tablewrap"><table><thead><tr><th>Node</th><th>s</th><th>Start → end</th><th>Retrieval</th><th>Info</th></tr></thead><tbody>'+
+   ns.map(n=>`<tr><td>${esc(n.title)}</td><td class="num">${n.elapsed}</td><td class="num">${n.start??''} → ${n.end??''}</td><td>${n.count!=null?n.count+' chunks · score '+n.smin+'–'+n.smax:''}</td><td>${esc(n.info||'')}${n.error?' <b>'+esc(n.error)+'</b>':''}</td></tr>`).join('')+'</tbody></table></div>';}
+function workflowLog(r){const d=r.direct;
+  if(d){if(d.error)return `<pre>${esc(d.error)}</pre>`;
+    return `<pre>replay took ${d.time}s (workflow reports ${d.wf_elapsed??'-'}s) · expected document in replay: ${d.expected_in_direct==null?'-':d.expected_in_direct} · per level ${esc(d.level_counts||'-')}
+${esc(r.replay_diag||'')}
+question: ${esc(d.question||'')}
+query:    ${esc(d.query||'')}
+${d.ranking?'tool log: '+esc(d.ranking):''}</pre>`+nodesTable(d.nodes);}
+  if(r.nodes&&r.nodes.length)return nodesTable(r.nodes);
+  return '<pre>Not collected. Turn on “Also trace the tool” in Connect (needs the workflow key), or use the Workflow (tool only) mode.</pre>';}
+const ds=(title,inner,open,sub)=>`<details class="ds" ${open?'open':''}><summary>${title}${sub?` <span class="sub">${sub}</span>`:''}</summary><div class="in">${inner}</div></details>`;
+async function openDrawer(id){const t=tests.find(x=>x.id===id);let r={};try{r=await api('/api/result?id='+encodeURIComponent(id));}catch(e){}
+  const src=(r.sources||[]).map(s=>`${s.level} | ${s.doc}${s.url?'':'  (no link)'}`).join('\n')||'-';
+  const td=(r.tool_docs||[]).map(s=>`${s.level} | ${s.doc}`).join('\n')||'-';
+  const st=r.status||(t.kind==='manual'?'MANUAL':'NOTRUN');
+  $('dtitle').textContent=t.id;$('dtag').textContent=t.kind;
+  const kv=(k,v)=>`<dt>${k}</dt><dd>${v}</dd>`;
+  $('dbody').innerHTML=`<div class="qbox">${esc(t.question)}${t.channel?'\n<span class="mut">[channel_id: '+esc(t.channel)+']</span>':''}</div>
+  <dl class="kv">
+    ${kv('Status',stat(st)+(r.time!=null?` <span class="mut num"> · ${r.time}s${r.ttft?` (first token ${r.ttft}s)`:''}</span>`:''))}
+    ${r.reason||r.diag?kv('Why',esc([r.reason,r.diag].filter(Boolean).join(' · '))):''}
+    ${kv('Expected document',esc(t.expected_doc||'-'))}
+    ${kv('Tool calls',r.tool_calls==null?'-':r.tool_calls)}
+    ${kv('Content score',r.content_score==null?'-':r.content_score+'%')}
+    ${kv('Expected doc in tool result',r.expected_in_tool==null?'-':String(r.expected_in_tool))}
+    ${kv('Time split',`agent 1: ${r.t_llm1??'-'}s · tool: ${r.t_tool??'-'}s · agent 2: ${r.t_llm2??'-'}s · answer: ${r.t_answer??'-'}s`)}
+  </dl>
+  ${ds('Answer',`<pre>${esc(r.answer||'-')}</pre>`,true)}
+  ${ds('Answer cites',`<pre>${esc(src)}</pre>`,true)}
+  ${ds('Expected result',`<pre>${esc(t.expected||'-')}</pre>`,false,'from the workbook')}
+  ${ds('What the agent sent to the tool',`<pre>question: ${esc(r.agent_question||'-')}\nquery:    ${esc(r.agent_query||'-')}</pre>`,true)}
+  ${ds('Tool returned',`<pre>chunks per level: ${esc(r.level_counts||'-')}    best chunk of the expected document matches ${r.best_chunk_pct==null?'-':r.best_chunk_pct+'% of the expected excerpt'}\n${esc(td)}${r.tool_log?'\n\ntool log: '+esc(r.tool_log):''}</pre>`,false,'level | document')}
+  ${ds('Agent log',`<pre>${esc(agentLog(r))}</pre>`,false)}
+  ${ds('Workflow log',workflowLog(r),false,r.direct?'replay of the agent’s call':'this run')}
+  ${ds('Raw tool output',`<pre>${esc(r.tool_text||'-')}</pre>`,false,`${(r.tool_text||'').length} characters, what the agent saw`)}
+  ${r.ranking?ds('Tool ranking log',`<pre>${esc(r.ranking)}</pre>`,false):''}`;
+  $('drawer').classList.add('open');$('drawer').setAttribute('aria-hidden','false');$('scrim').classList.add('on');$('dbody').scrollTop=0;}
+function closeDrawer(){$('drawer').classList.remove('open');$('drawer').setAttribute('aria-hidden','true');$('scrim').classList.remove('on');}
+$('dclose').onclick=closeDrawer;$('scrim').onclick=closeDrawer;
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+
+/* ---- run ---- */
+function runSummary(){const n=[...sel].filter(id=>{const t=tests.find(x=>x.id===id);return t&&t.kind!=='skip';}).length;
+  const modeTxt={chat_stream:'Agent, streaming',chat_block:'Chat, blocking',workflow:'Workflow, tool only',custom:'Custom endpoint'}[$('mode').value]||$('mode').value;
+  $('runSummary').textContent=tests.length?`${n} test${n===1?'':'s'} selected`:'No tests loaded';
+  $('runMeta').textContent=`Procurement agent · ${modeTxt} · ${$('workers').value} worker${$('workers').value==='1'?'':'s'}`;
+  $('btnRunSel').textContent=n?`Run ${n} selected`:'Run selected';}
+async function start(ids){if(!ids.length){toast('Nothing to run. Choose tests in step 2.');return;}
+  if(!$('base_url').value&&!(profiles.agent&&profiles.agent.base_url)&&$('mode').value!=='custom'){toast('Set the Base URL first.');go(1);$('base_url').focus();return;}
+  try{await api('/api/run',{settings:settings(),ids});go(3);poll(true);}catch(e){toast(e.message);}}
+const failedIds=()=>tests.filter(t=>['FAIL','ERROR'].includes((results[t.id]||{}).status)).map(t=>t.id);
+$('btnRunSel').onclick=()=>start(tests.filter(t=>sel.has(t.id)&&t.kind!=='skip').map(t=>t.id));
+$('btnRunAll').onclick=()=>start(tests.filter(checkable).map(t=>t.id));
+$('btnRunFail').onclick=()=>start(failedIds());$('btnRunFail2').onclick=()=>start(failedIds());
+$('btnStop').onclick=()=>api('/api/stop',{});
+['workers','mode'].forEach(k=>$(k).addEventListener('change',runSummary));
+
+async function refresh(){const s=await api('/api/state');results=s.results;running=s.running;
+  $('runpill').className='state'+(s.running?' run':'');$('runtxt').textContent=s.running?`Running ${s.done}/${s.total}`:(hasResults()?'Done':'Idle');
+  $('btnStop').disabled=!s.running;['btnRunSel','btnRunAll','btnRunFail','btnRunFail2'].forEach(k=>$(k).disabled=s.running);
+  $('idleView').classList.toggle('hide',s.running);$('liveView').classList.toggle('hide',!s.running);
+  const pct=s.total?Math.round(100*s.done/s.total):0;$('barfill').style.width=pct+'%';$('hfill').style.width=s.running?pct+'%':'0';
+  $('liveCount').textContent=s.done;$('liveOf').textContent=`of ${s.total} done`;
+  $('progtxt').textContent=s.running?`${s.elapsed}s elapsed`:'';
+  $('log').textContent=(s.log||[]).join('\n');cards(s.summary);render();
+  if(lastRunning&&!s.running){loadRuns();toast('Run finished');if(cur===3)go(4);}
+  lastRunning=s.running;return s.running;}
+function cards(m){if(!m||!m.total){$('cards').innerHTML='<div class="empty">No results yet. Run some tests and they will show up here.</div>';return;}
+  const seg=k=>`<i class="${k}" style="flex:${m[k]||0}" title="${LABEL[k]}: ${m[k]||0}"></i>`;
+  const rest=Math.max(0,m.total-(m.PASS||0)-(m.FAIL||0)-(m.ERROR||0)-(m.MANUAL||0));
+  const x=(v,l,c='')=>`<div class="${c}"><b>${v}</b><span>${l}</span></div>`;
+  $('cards').innerHTML=`<div class="hero"><div><div class="big num">${m.pass_rate}<small>%</small></div><div class="cap">pass rate, excluding manual</div></div>
+    <div><div class="dist">${seg('PASS')}${seg('FAIL')}${seg('ERROR')}${seg('MANUAL')}${rest?`<i style="flex:${rest}"></i>`:''}</div>
+    <div class="legend"><span class="PASS"><b>${m.PASS}</b> pass</span><span class="FAIL"><b>${m.FAIL}</b> fail</span><span class="ERROR"><b>${m.ERROR}</b> error</span><span><b>${m.MANUAL}</b> manual</span></div></div></div>
+    <div class="metrics">
+    ${x(m.avg+'s','average time')}${x(m.p95+'s','p95 time')}${x(m.max+'s','slowest')}
+    ${x(m.slow,'over time limit',m.slow?'warn':'')}${x(m.multi_tool,'more than 1 tool call',m.multi_tool?'warn':'')}
+    ${m.prompt_tokens?x(m.prompt_tokens,'avg tokens the agent read'):''}
+    ${m.replay_n?x(`${m.replay_hit} / ${m.replay_n}`,'replay finds the expected document'):''}
+    ${m.t_llm2!=null?x(`${m.t_llm1??'-'} / ${m.t_tool??'-'} / ${m.t_llm2} / ${m.t_answer??'-'}s`,'avg split: agent 1 / tool / agent 2 / answer','wide'):''}
+    ${m.nodes_avg&&m.nodes_avg.length?`<div class="wide"><b style="font-size:14px;font-weight:500;line-height:1.7">${m.nodes_avg.slice(0,4).map(n=>esc(n[0])+': <span class="num">'+n[1]+' / '+n[2]+'</span>').join('<br>')}</b><span>slowest workflow nodes, avg / max seconds</span></div>`:''}
+    </div>`;}
+function poll(fast){clearInterval(polling);polling=setInterval(async()=>{try{const r=await refresh();if(!r&&!fast)return;}catch(e){}},900);}
+
+/* ---- history / baseline ---- */
+async function loadRuns(){try{const j=await api('/api/runs');const c=$('baseline').value;
+  $('baseline').innerHTML='<option value="">Compare with: none</option>'+j.runs.map(n=>`<option ${n===c?'selected':''}>${esc(n)}</option>`).join('');}catch(e){}}
+$('baseline').onchange=async e=>{prev={};if(e.target.value){try{prev=(await api('/api/run?name='+encodeURIComponent(e.target.value))).results;}catch(err){}}renderResults();};
+
+/* ---- export ---- */
+async function exp(kind){setRes($('exres'),'Exporting…');try{const j=await api('/api/export',{kind});
+  $('exres').className='res ok';$('exres').innerHTML=`${j.rows} rows · <a class="dl" href="/download?f=${encodeURIComponent(j.file)}">${esc(j.file)}</a>`;
+  window.location='/download?f='+encodeURIComponent(j.file);}catch(e){setRes($('exres'),'Error: '+e.message,'bad');}}
+$('exX').onclick=()=>exp('xlsx');$('exN').onclick=()=>exp('nodes');$('exC').onclick=()=>exp('csv');$('exJ').onclick=()=>exp('json');
+
+/* ---- init: returning users skip straight to where they left off ---- */
+(async()=>{loadSettings();modeUI();await loadProfiles();await loadTests();await loadRuns();
+  const s=await refresh().catch(()=>({running:false}));poll(false);
+  if(!tests.length&&$('path').value){try{await api('/api/load',{path:$('path').value,clean:$('clean').checked});await loadTests();setRes($('loadres'),`Loaded ${tests.length} rows`,'ok');}catch(e){setRes($('loadres'),'Could not auto-load: '+e.message,'bad');}}
+  let n=1;if(running)n=3;else if(hasResults())n=4;else if(done(1)&&tests.length)n=3;else if(done(1))n=2;
+  go(n);})();
+</script>
+</body>
+</html>

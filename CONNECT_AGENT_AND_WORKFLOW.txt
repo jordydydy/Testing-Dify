@@ -1,0 +1,26 @@
+CONNECT THE AGENT AND THE WORKFLOW (see both logs together)
+
+1. Open http://127.0.0.1:8765
+2. Connection box
+   - Agent: Base URL (https://genaistudio.telkomsel.co.id/studio/v1) and the AGENT app API key.
+   - Workflow: Base URL and the WORKFLOW app API key (the tool "parrarel_agent_judge"). Each app has its own key.
+   - Click "Test agent connection" and "Test workflow connection". 401 means the key is wrong or belongs to the other app.
+3. Click "Save connections on this PC".
+   - The keys are encrypted with Windows DPAPI (file profiles.json). Only your Windows user on this PC can decrypt them.
+   - After saving, the key boxes can stay empty: the server uses the saved keys. The page never gets them back.
+   - Keys are never written into the saved runs (test_runs/*.json) or the Excel.
+   - Delete them any time: remove profiles.json, or run autostart_remove.bat and delete the file.
+4. Tick "also trace the tool", select tests, Run.
+
+What you get per test (click a row)
+- What the agent sent to the tool: the real "question" and "query" parameters, shown separately.
+- Agent log: timeline in seconds (tool call, tool result received, first answer token, answer complete), tokens the agent read and wrote, and the time split.
+- Workflow log: every node with elapsed seconds, start and end, and for the retrieval nodes how many chunks came back and their score range. Plus the tool's own "candidates ..." line.
+- A one-line diagnosis, for example "replay also misses it: this query cannot find the document" or "replay finds it but the agent's call did not: retrieval varies between identical calls".
+
+On the summary: average tokens the agent read, how often the replay finds the expected document, and the slowest workflow nodes (average and maximum seconds).
+In "Workflow (tool only)" mode you get the same node log without the agent.
+
+Good to know
+- The workflow log is a REPLAY: after the agent finishes, the tester calls the workflow with exactly the question and query the agent sent. It is a second run, not the run the agent triggered (Dify's API does not expose the node log of the agent's own call). It adds the tool's time to each test, so use it for diagnosis, not for timing the agent. For timing, run without the tick, with 1 worker.
+- Do not paste API keys into chat. Enter them in the page. If a key was ever pasted somewhere, rotate it in Dify.

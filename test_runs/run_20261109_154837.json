@@ -1,0 +1,586 @@
+{
+ "name": "run_20261109_154837",
+ "settings": {
+  "mode": "chat_stream",
+  "ssl_mode": "corp",
+  "ca_file": "{}",
+  "base_url": "https://genaistudio.telkomsel.co.id/studio/v1",
+  "wf_base_url": "https://genaistudio.telkomsel.co.id/studio/v1",
+  "user": "djordy_fernando_x",
+  "inputs": "{}",
+  "wf_question_var": "question",
+  "wf_query_var": "query",
+  "wf_query_tpl": "{question}",
+  "wf_result_field": "result",
+  "custom_url": "",
+  "custom_path": "answer",
+  "custom_headers": "{}",
+  "custom_body": "{\"query\": \"{{question}}\", \"user\": \"{{user}}\"}",
+  "workers": "5",
+  "timeout": "120",
+  "retries": "1",
+  "time_limit": "40",
+  "min_content": "0",
+  "path": "C:\\Users\\Jordy\\Downloads\\Backup Procurement\\Workflow\\Solution_02_Parallel_Retrieval_Agent_As_Judge\\Test_Document_Procurement.xlsx",
+  "fail_slow": false,
+  "auto_export": false,
+  "also_tool": true,
+  "clean": true,
+  "remember": true,
+  "target": "sub",
+  "send_channel": false,
+  "channel_var": "channel_id"
+ },
+ "file": "C:\\Users\\Jordy\\Downloads\\Backup Procurement\\Workflow\\Test_Automation\\uploads\\20261109_154831_Test Document v2 - Corporate Knowledge Orchestrator.xlsx",
+ "results": [
+  {
+   "id": "TS-01.35",
+   "row": 6,
+   "question": "Cara membuat EDPL baru?",
+   "expected_doc": "[TSEL] – User Guide EDPL Enhancement (2024) for User V.1.1 (2).pdf",
+   "kind": "document",
+   "ts": "2026-11-09T15:52:44",
+   "status": "ERROR",
+   "reason": "ReadTimeout: HTTPSConnectionPool(host='genaistudio.telkomsel.co.id', port=443): Read timed out. (read timeout=120.0)",
+   "time": 0,
+   "answer": "",
+   "cited_doc": "",
+   "level": "",
+   "sources": [],
+   "tool_calls": 0,
+   "tool_docs": [],
+   "retrieved": [],
+   "agent_query": "",
+   "diag": "",
+   "slow": false
+  },
+  {
+   "id": "TS-01.36",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.37",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.38",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.39",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.40",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-03.07",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-03.08",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-08.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-09.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-10.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-12.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-15.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-16.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-17.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.01",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.02",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.03",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.05",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.06",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.07",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.08",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.09",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.10",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.11",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.12",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.13",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.14",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.15",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.16",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.17",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.18",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.19",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.20",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.21",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.22",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.23",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.24",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.25",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.26",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.27",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.28",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.29",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS002.30",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.01",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.02",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.03",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.04",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.05",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.06",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.07",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.08",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.09",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.10",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.11",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.12",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.13",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.14",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.15",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.16",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.17",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.18",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.19",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.20",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.21",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.22",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.23",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.24",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.25",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.26",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.27",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.28",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.29",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS003.30",
+   "status": "SKIP",
+   "reason": "stopped",
+   "time": 0
+  },
+  {
+   "id": "TS-01.32",
+   "row": 3,
+   "question": "Bagaimana memantau dan mengelola TKDN?",
+   "expected_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "kind": "document",
+   "ts": "2026-11-09T15:52:44",
+   "status": "ERROR",
+   "reason": "ReadTimeout: HTTPSConnectionPool(host='genaistudio.telkomsel.co.id', port=443): Read timed out. (read timeout=120.0)",
+   "time": 0,
+   "answer": "",
+   "cited_doc": "",
+   "level": "",
+   "sources": [],
+   "tool_calls": 0,
+   "tool_docs": [],
+   "retrieved": [],
+   "agent_query": "",
+   "diag": "",
+   "slow": false
+  },
+  {
+   "id": "TS-01.34",
+   "row": 5,
+   "question": "Bagaimana alur Agreement Paralel hingga PO di SIENNA?",
+   "expected_doc": "ND Pengaturan Penerbitan Agreement secara Paralel shared.pdf",
+   "kind": "document",
+   "ts": "2026-11-09T15:52:44",
+   "status": "ERROR",
+   "reason": "ReadTimeout: HTTPSConnectionPool(host='genaistudio.telkomsel.co.id', port=443): Read timed out. (read timeout=120.0)",
+   "time": 0,
+   "answer": "",
+   "cited_doc": "",
+   "level": "",
+   "sources": [],
+   "tool_calls": 0,
+   "tool_docs": [],
+   "retrieved": [],
+   "agent_query": "",
+   "diag": "",
+   "slow": false
+  },
+  {
+   "id": "TS-01.31",
+   "row": 2,
+   "question": "mau pengadaan tp impor boleh?",
+   "expected_doc": "PD 004 - Implementasi Tingkat Komponen Dalam Negeri (TKDN) dalam aktivasi belanja perseroan (1).pdf",
+   "kind": "document",
+   "ts": "2026-11-09T15:52:44",
+   "status": "ERROR",
+   "reason": "ReadTimeout: HTTPSConnectionPool(host='genaistudio.telkomsel.co.id', port=443): Read timed out. (read timeout=120.0)",
+   "time": 0,
+   "answer": "",
+   "cited_doc": "",
+   "level": "",
+   "sources": [],
+   "tool_calls": 0,
+   "tool_docs": [],
+   "retrieved": [],
+   "agent_query": "",
+   "diag": "",
+   "slow": false
+  },
+  {
+   "id": "TS-01.33",
+   "row": 4,
+   "question": "Bagaimana manajemen database vendor?",
+   "expected_doc": "060_Surat_Edaran_VP_CGAE_Procurement_-_Manajemen_Pengelolaan_Vendor.pdf",
+   "kind": "document",
+   "ts": "2026-11-09T15:52:44",
+   "status": "ERROR",
+   "reason": "ReadTimeout: HTTPSConnectionPool(host='genaistudio.telkomsel.co.id', port=443): Read timed out. (read timeout=120.0)",
+   "time": 0,
+   "answer": "",
+   "cited_doc": "",
+   "level": "",
+   "sources": [],
+   "tool_calls": 0,
+   "tool_docs": [],
+   "retrieved": [],
+   "agent_query": "",
+   "diag": "",
+   "slow": false
+  }
+ ]
+}
