@@ -20,6 +20,7 @@ import io
 import json
 import os
 import re
+import secrets
 import sys
 import threading
 import time
@@ -45,6 +46,12 @@ for d in (RUNS_DIR, OUT_DIR, UPLOAD_DIR):
 
 DEFAULT_XLSX = os.path.join(os.path.dirname(HERE), "Solution_02_Parallel_Retrieval_Agent_As_Judge", "Test_Document_Procurement.xlsx")
 PORT = int(os.environ.get("TESTER_PORT", "8765"))
+# Request guard: only the page this server served may call the API. Other websites open in the same browser can send
+# requests to 127.0.0.1 too, and DNS rebinding can make them look same-origin; the Host check and this per-process
+# token (embedded in the served page, sent back as a custom header) stop both.
+SESSION_TOKEN = secrets.token_urlsafe(32)
+ALLOWED_HOSTS = {f"127.0.0.1:{PORT}", f"localhost:{PORT}"}
+MAX_BODY = 60 * 1024 * 1024          # bytes; uploads arrive base64-encoded in JSON, so this allows a ~45 MB workbook
 
 # ----------------------------------------------------------------------------- saved connections (API keys encrypted with Windows DPAPI)
 PROFILES_PATH = os.path.join(HERE, "profiles.json")
@@ -133,7 +140,7 @@ def apply_profiles(st):
 
 # ----------------------------------------------------------------------------- text helpers
 EXT_RE = re.compile(r"(\.(pdf|txt|docx?|xlsx?|pptx?))+$", re.I)
-TAG_RE = re.compile(r"\[(?!TSEL\])[^\]]{0,30}\]")          # [Procurement Hub] [Positive Test] ... (but NOT [TSEL])
+TAG_RE = re.compile(r"[\[{](?!TSEL\])[^\]]{0,30}\]")          # [Procurement Hub] [Positive Test] ... (but NOT [TSEL])
 SRC_RE = re.compile(r"^\s*Document source:\s*(.+?)\s*$", re.I | re.M)
 LVL_RE = re.compile(r"^\s*Knowledge Level:\s*(.+?)\s*$", re.I | re.M)
 EMAIL_RE = re.compile(r"[\w.]+@telkomsel\.co\.id", re.I)
@@ -240,9 +247,24 @@ def classify(row, q, exp_doc):
 
 
 # ----------------------------------------------------------------------------- workbook
+def pick_sheet(wb):
+    """The sheet that holds the test cases: visible, with 'Test Case ID' and 'Test Steps' headers. Workbooks with a cover page and
+    several test sheets: prefer the one named after Procurement ('ProcHubOnly - Dev'), else the first one that qualifies."""
+    ok = []
+    for sh in wb.worksheets:
+        if sh.sheet_state != "visible":
+            continue
+        hdr = [str(c.value or "").strip().lower() for c in sh[1]]
+        if any(h.startswith("test case id") for h in hdr) and any(h.startswith("test steps") for h in hdr):
+            ok.append(sh)
+    if not ok:
+        return next((x for x in wb.worksheets if x.sheet_state == "visible"), wb.worksheets[0])
+    return next((x for x in ok if "proc" in x.title.lower()), ok[0])
+
+
 def read_tests(path, clean=True):
     wb = openpyxl.load_workbook(path, data_only=True)
-    ws = next((s for s in wb.worksheets if s.sheet_state == "visible"), wb.worksheets[0])
+    ws = pick_sheet(wb)
     header = {}
     for c in ws[1]:
         h = str(c.value or "").strip().lower()
@@ -256,7 +278,7 @@ def read_tests(path, clean=True):
         return None
     cmap = {k: col(*v) for k, v in {
         "id": ("test case id",), "title": ("test title",), "prereq": ("prerequisite",), "steps": ("test steps",),
-        "expected": ("expected result",), "actual": ("actual result",), "ev_k": ("evidence (knowledge)",),
+        "expected": ("expected result",), "actual": ("actual result",), "ev_k": ("evidence (knowledge",),
         "ev_o": ("evidence (output)",), "time": ("execution time",), "status": ("status",), "comments": ("comments",),
         "date": ("execution date",), "by": ("test executed by",),
         "exp_doc": ("expected document",), "ttype": ("test type", "expected type")}.items()}
@@ -289,6 +311,9 @@ def read_tests(path, clean=True):
         seen[t["id"]] = seen.get(t["id"], 0) + 1
         if seen[t["id"]] > 1:
             t["id"] = f"{t['id']}#{seen[t['id']]}"
+    st_col = cmap.get("status")
+    cmap["_sheet"] = ws.title
+    cmap["_passed_words"] = bool(st_col and "passed" in str(ws.cell(1, st_col).value or "").lower())   # header says [PASSED/ FAILED]
     return tests, cmap
 
 
@@ -749,9 +774,7 @@ def evaluate(test, out, st):
         if pairs:
             res.update(status="FAIL", reason=f"expected fallback but answered from '{res['cited_doc']}'")
         elif FALLBACK_RE.search(ans) or EMAIL_RE.search(ans):
-            res.update(status="PASS", reason="fallback with contacts" if EMAIL_RE.search(ans) else "fallback (no contacts found)")
-            if not EMAIL_RE.search(ans):
-                res["status"], res["reason"] = "FAIL", "fallback text but escalation contacts missing"
+            res.update(status="PASS", reason="fallback with contacts" if EMAIL_RE.search(ans) else "fallback (no escalation contacts in the answer)")
         else:
             res.update(status="FAIL", reason="expected fallback message")
     elif kind == "security":
@@ -971,7 +994,7 @@ def export_xlsx():
     if not src or not os.path.exists(src):
         raise RuntimeError("no workbook loaded")
     wb = openpyxl.load_workbook(src)
-    ws = next((s for s in wb.worksheets if s.sheet_state == "visible"), wb.worksheets[0])
+    ws = pick_sheet(wb)
     cm = STATE["cmap"]
     by_id = {t["id"]: t for t in STATE["tests"]}
     n = 0
@@ -990,9 +1013,14 @@ def export_xlsx():
         dr = r.get("direct") or {}
         rp = f"\nworkflow replay: {r.get('replay_diag') or dr.get('error') or ''} | slowest node {dr.get('slowest_node', '')} | per level {dr.get('level_counts', '')}" if dr else ""
         put("ev_k", (f"agent query: {r.get('agent_query', '')}\nchunks per level: {r.get('level_counts', '')}\ntool returned: {tools}{rp}")[:32000] if tools or r.get("agent_query") else "; ".join(r.get("retrieved") or []))
-        put("ev_o", f"{r.get('level', '')} | {r.get('cited_doc', '')}"[:32000])
+        cited = f"{r.get('level', '')} | {r.get('cited_doc', '')}"
+        if cm.get("ev_o"):
+            put("ev_o", cited[:32000])
+        elif cm.get("ev_k"):                          # one combined "Evidence (Knowledge - Output)" column
+            ws.cell(row, cm["ev_k"]).value = ((ws.cell(row, cm["ev_k"]).value or "") + f"\nanswer cites: {cited}")[:32000]
         put("time", r.get("time"))
-        put("status", "PASS" if r["status"] == "PASS" else ("FAIL" if r["status"] in ("FAIL", "ERROR") else "MANUAL"))
+        pw = cm.get("_passed_words")
+        put("status", ("PASSED" if pw else "PASS") if r["status"] == "PASS" else (("FAILED" if pw else "FAIL") if r["status"] in ("FAIL", "ERROR") else "MANUAL"))
         put("comments", (r.get("reason", "") + (f" | {r['diag']}" if r.get("diag") else ""))[:32000])
         n += 1
     name = os.path.splitext(os.path.basename(src))[0] + f"_results_{datetime.now():%Y%m%d_%H%M%S}.xlsx"
@@ -1085,7 +1113,32 @@ class H(BaseHTTPRequestHandler):
         n = int(self.headers.get("Content-Length") or 0)
         return json.loads(self.rfile.read(n) or b"{}") if n else {}
 
+    def host_ok(self):
+        if (self.headers.get("Host") or "").lower() in ALLOWED_HOSTS:
+            return True
+        self.send_json({"error": "forbidden host"}, 403)
+        return False
+
+    def post_rejection(self):
+        """(code, message) when a POST is not from the page this server served, else None"""
+        origin = self.headers.get("Origin")
+        if origin and urlparse(origin).netloc.lower() not in ALLOWED_HOSTS:
+            return 403, "forbidden origin"
+        if not (self.headers.get("Content-Type") or "").lower().startswith("application/json"):
+            return 415, "Content-Type must be application/json"
+        if not secrets.compare_digest(self.headers.get("X-Tester-Token") or "", SESSION_TOKEN):
+            return 403, "invalid session token: the runner was restarted, reload the page"
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            return 400, "bad Content-Length"
+        if n > MAX_BODY:
+            return 413, f"request too large ({n // (1024 * 1024)} MB, limit {MAX_BODY // (1024 * 1024)} MB)"
+        return None
+
     def do_GET(self):
+        if not self.host_ok():
+            return
         u = urlparse(self.path)
         q = parse_qs(u.query)
         try:
@@ -1136,6 +1189,12 @@ class H(BaseHTTPRequestHandler):
             self.send_json({"error": f"{type(ex).__name__}: {ex}"}, 500)
 
     def do_POST(self):
+        if not self.host_ok():
+            return
+        bad = self.post_rejection()
+        if bad:
+            self.close_connection = True          # the unread body must not be parsed as the next request
+            return self.send_json({"error": bad[1]}, bad[0])
         try:
             d = self.body()
             p = urlparse(self.path).path
@@ -1169,6 +1228,10 @@ class H(BaseHTTPRequestHandler):
                 if st.get("also_tool") and not all(wf_conn(st)):
                     return self.send_json({"error": "'Also trace the tool' needs the workflow Base URL and API key"}, 400)
                 threading.Thread(target=run_batch, args=(st, d.get("ids") or []), daemon=True).start()
+                self.send_json({"ok": True})
+            elif p == "/api/clearlog":
+                with LOCK:
+                    STATE["log"] = []
                 self.send_json({"ok": True})
             elif p == "/api/stop":
                 STATE["stop"] = True
@@ -1207,7 +1270,11 @@ class ExclusiveServer(ThreadingHTTPServer):
 
 def load_ui():
     p = os.path.join(HERE, "ui.html")
-    return open(p, encoding="utf-8").read() if os.path.exists(p) else "<h1>ui.html is missing next to procurement_tester.py</h1>"
+    if not os.path.exists(p):
+        return "<h1>ui.html is missing next to procurement_tester.py</h1>"
+    with open(p, encoding="utf-8") as f:
+        html = f.read()
+    return html.replace("<head>", f'<head>\n<meta name="tester-token" content="{SESSION_TOKEN}">', 1)
 
 
 def main():
