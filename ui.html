@@ -380,7 +380,10 @@ details.log[open] summary{margin-bottom:0}
         <div><label class="l" for="retries">Retries on network error</label><input type="number" id="retries" value="1" min="0" max="5"></div>
         <div><label class="l" for="time_limit">Flag SLOW above (s)</label><input type="number" id="time_limit" value="50" min="0"></div>
         <div><label class="l" for="min_content">Min content score %</label><input type="number" id="min_content" value="0" min="0" max="100"></div>
+        <div><label class="l" for="cite_rule">Expected document must be</label><select id="cite_rule"><option value="first">the first source cited</option><option value="any">any source cited</option></select></div>
       </div>
+      <div><label class="l" for="leak_markers">System prompt phrases (fail if an answer repeats one)</label><input type="text" id="leak_markers" placeholder="phrase from your system prompt | another phrase" spellcheck="false"></div>
+      <p class="hint" style="margin:0">Use a few distinctive phrases that only appear in the agent's instructions, separated by |. Checked on every test.</p>
       <label class="chk"><input type="checkbox" id="fail_slow"><span>Fail tests slower than the limit</span></label>
       <label class="chk"><input type="checkbox" id="clean" checked><span>Clean test steps (“Halo min”, “Chatbot Answer”, quotes)</span></label>
       <label class="chk"><input type="checkbox" id="auto_export" checked><span>Write the Excel automatically when a run finishes (results/ folder)</span></label>
@@ -439,7 +442,7 @@ details.log[open] summary{margin-bottom:0}
 
 <script>
 const $=id=>document.getElementById(id);
-const F=['mode','ssl_mode','ca_file','base_url','api_key','wf_base_url','wf_api_key','user','inputs','wf_question_var','wf_query_var','wf_query_tpl','wf_result_field','custom_url','custom_path','custom_headers','custom_body','workers','timeout','retries','time_limit','min_content','path'];
+const F=['mode','ssl_mode','ca_file','base_url','api_key','wf_base_url','wf_api_key','user','inputs','wf_question_var','wf_query_var','wf_query_tpl','wf_result_field','custom_url','custom_path','custom_headers','custom_body','workers','timeout','retries','time_limit','min_content','cite_rule','leak_markers','path'];
 const C=['random_user','fail_slow','auto_export','also_tool','clean','remember'];
 let tests=[],results={},prev={},sel=new Set(),polling=null,lastRunning=false,running=false,cur=1,profiles={};
 
